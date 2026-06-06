@@ -179,31 +179,78 @@
       color:var(--green-light); font-weight:700;
     }
 
-    /* GETTING HERE */
-    .route-grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-      gap:1.3rem; margin-top:1.8rem;
-    }
-    .route {
+    /* LOCATION MAP BOX */
+    .map-box {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:1.5rem; margin-top:1.8rem;
       background:#fff; border-radius:var(--radius);
-      padding:1.4rem 1.6rem;
-      box-shadow:0 2px 12px rgba(0,0,0,.06);
-      border-left:5px solid var(--green);
+      box-shadow:0 2px 14px rgba(0,0,0,.07);
+      overflow:hidden;
     }
-    .route h3 { font-size:1.1rem; margin-bottom:.3rem; }
-    .route .meta { font-size:.82rem; color:var(--muted); margin-bottom:.7rem; }
-    .route ol { padding-left:1.3rem; font-size:.93rem; }
-    .route ol li { margin-bottom:.3rem; }
-    .route .note {
-      margin-top:.75rem; font-size:.83rem; color:var(--muted);
-      border-left:3px solid var(--green-light); padding-left:.65rem;
+    .map-visual { background:#dce8d4; display:flex; align-items:stretch; }
+    .map-visual svg { width:100%; height:100%; display:block; }
+    .map-info {
+      padding:1.8rem 1.8rem 1.8rem 1rem;
+      display:flex; flex-direction:column; gap:.9rem;
     }
-    .route-intro {
-      background:var(--green); color:#fff;
-      border-radius:var(--radius); padding:1.4rem 1.8rem;
-      margin-bottom:1.5rem; font-size:1rem;
+    .map-address {
+      display:flex; gap:.75rem; align-items:flex-start;
+      font-size:.97rem; line-height:1.5;
     }
-    .route-intro strong { color:#c8e6c9; }
+    .map-pin-icon { font-size:1.4rem; flex-shrink:0; margin-top:.1rem; }
+    .map-facts { display:flex; flex-direction:column; gap:.35rem; }
+    .map-fact { font-size:.9rem; display:flex; gap:.5rem; }
+    .map-fact span { color:var(--text); }
+    .map-btn {
+      display:inline-block; background:var(--green); color:#fff;
+      text-decoration:none; padding:.7rem 1.2rem;
+      border-radius:7px; font-size:.93rem; font-weight:600;
+      transition:opacity .15s; align-self:flex-start;
+    }
+    .map-btn:hover { opacity:.88; }
+    .map-contact-note { font-size:.85rem; color:var(--muted); margin:0; }
+    .map-contact-note a { color:var(--green-light); font-weight:600; }
+    @media (max-width:620px) {
+      .map-box { grid-template-columns:1fr; }
+      .map-info { padding:1.4rem; }
+    }
+
+    /* CONTACT FORM */
+    .contact-form {
+      background:#fff; border-radius:var(--radius);
+      padding:2rem 2.2rem;
+      box-shadow:0 2px 14px rgba(0,0,0,.07);
+      margin-top:1.8rem; max-width:620px;
+    }
+    .form-row { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.1rem; }
+    .form-row label { font-size:.92rem; font-weight:600; color:var(--green); }
+    .form-row input,
+    .form-row textarea,
+    .form-row select {
+      border:1.5px solid #ccc; border-radius:7px;
+      padding:.65rem .85rem; font-size:.97rem;
+      font-family:inherit; color:var(--text);
+      transition:border-color .15s;
+      background:#fff;
+    }
+    .form-row input:focus,
+    .form-row textarea:focus { outline:none; border-color:var(--green); }
+    .form-row textarea { resize:vertical; min-height:120px; }
+    .form-row.two-col { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .form-row.two-col > div { display:flex; flex-direction:column; gap:.4rem; }
+    .form-note { font-size:.83rem; color:var(--muted); margin-bottom:1.2rem; }
+    .form-note a { color:var(--green-light); }
+    .btn-submit {
+      background:var(--green); color:#fff; border:none;
+      padding:.85rem 2rem; border-radius:8px;
+      font-size:1rem; font-weight:600; cursor:pointer;
+      transition:opacity .15s, transform .1s;
+    }
+    .btn-submit:hover { opacity:.88; transform:translateY(-1px); }
+    @media (max-width:480px) {
+      .form-row.two-col { grid-template-columns:1fr; }
+      .contact-form { padding:1.4rem; }
+    }
 
     /* BOOK */
     .book-grid { display:flex; flex-wrap:wrap; gap:1rem; margin-top:1.5rem; }
@@ -251,8 +298,9 @@
       <a href="#photos">Photos</a>
       <a href="#discover">Discover</a>
       <a href="#seasons">Seasons</a>
-      <a href="#getting-here">Getting here</a>
+      <a href="#getting-here">Location</a>
       <a href="#book">Book</a>
+      <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -502,110 +550,74 @@
   </div>
 </section>
 
-<!-- GETTING HERE -->
+<!-- LOCATION -->
 <div class="band band-tint">
   <section id="getting-here">
-    <h2>Getting here — closer than you think</h2>
+    <h2>Location</h2>
     <p class="lead">
-      Tauplitz is very well reachable by car from Belgium, the Netherlands and Germany
-      — mostly motorway all the way, with the final scenic stretch through the Austrian
-      Alps being half the fun.
+      Tauplitz is a small alpine village in the heart of the Styrian Salzkammergut, Austria —
+      easy to reach by car from Belgium, the Netherlands and Germany, mostly via motorway.
     </p>
 
-    <div class="route-intro">
-      <strong>The final approach:</strong> from Salzburg take the A10 Tauernautobahn south,
-      exit at <strong>Radstadt</strong>, follow the B99 through Haus im Ennstal to
-      <strong>Bad Mitterndorf</strong>, then 5 km up to Tauplitz. GPS:
-      <strong>Bad Mitterndorf, Steiermark, Austria</strong>.
+    <div class="map-box">
+      <div class="map-visual" aria-hidden="true">
+        <!-- Stylised map placeholder using pure CSS/SVG -->
+        <svg viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated map showing Tauplitz location in Austria">
+          <!-- Background -->
+          <rect width="480" height="260" fill="#dce8d4"/>
+          <!-- Rough country shape suggestion -->
+          <ellipse cx="240" cy="130" rx="210" ry="100" fill="#c8dfc0" opacity=".6"/>
+          <!-- Mountain silhouette -->
+          <polygon points="120,200 160,130 200,170 240,110 280,160 320,125 360,170 400,200" fill="#6b9c78" opacity=".55"/>
+          <polygon points="180,200 220,145 260,175 300,135 340,165 380,200" fill="#4e8c60" opacity=".45"/>
+          <!-- Lake dots -->
+          <ellipse cx="255" cy="148" rx="10" ry="5" fill="#7ec8d8" opacity=".85"/>
+          <ellipse cx="230" cy="160" rx="7" ry="3.5" fill="#7ec8d8" opacity=".75"/>
+          <!-- Pin -->
+          <circle cx="255" cy="135" r="10" fill="#3a6b4a"/>
+          <circle cx="255" cy="135" r="5"  fill="#fff"/>
+          <line  x1="255" y1="145" x2="255" y2="158" stroke="#3a6b4a" stroke-width="2"/>
+          <!-- Label -->
+          <text x="270" y="140" font-family="sans-serif" font-size="13" font-weight="700" fill="#2c2c2c">Tauplitz</text>
+          <text x="270" y="155" font-family="sans-serif" font-size="10" fill="#555">Styria, Austria</text>
+          <!-- Nearest cities labels -->
+          <text x="48"  y="105" font-family="sans-serif" font-size="9" fill="#555">Munich 230 km</text>
+          <text x="48"  y="118" font-family="sans-serif" font-size="9" fill="#555">Salzburg 90 km</text>
+          <text x="340" y="105" font-family="sans-serif" font-size="9" fill="#555">Graz 120 km</text>
+          <text x="340" y="118" font-family="sans-serif" font-size="9" fill="#555">Vienna 280 km</text>
+          <!-- Compass rose -->
+          <text x="430" y="32" font-family="sans-serif" font-size="11" fill="#3a6b4a" font-weight="700">N</text>
+          <line x1="436" y1="35" x2="436" y2="50" stroke="#3a6b4a" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="map-info">
+        <div class="map-address">
+          <span class="map-pin-icon">📍</span>
+          <div>
+            <strong>Tauplitz</strong><br />
+            8982 Bad Mitterndorf<br />
+            Steiermark, Austria
+          </div>
+        </div>
+        <div class="map-facts">
+          <div class="map-fact">✈️ <span>Salzburg Airport — ~90 min</span></div>
+          <div class="map-fact">✈️ <span>Graz Airport — ~90 min</span></div>
+          <div class="map-fact">🚗 <span>Munich — ~2.5 h via A8/A10</span></div>
+          <div class="map-fact">🚗 <span>Brussels — ~9–10 h via E40/A8/A10</span></div>
+          <div class="map-fact">🚂 <span>Train to Stainach-Irdning, then taxi ~20 min</span></div>
+        </div>
+        <a class="map-btn"
+           href="https://www.openstreetmap.org/?mlat=47.553&mlon=13.973&zoom=13"
+           target="_blank" rel="noopener noreferrer">
+          Open map &amp; get directions ↗
+        </a>
+        <p class="map-contact-note">
+          Need help planning your route?
+          <a href="#contact">Send us a message</a> — we're happy to help.
+        </p>
+      </div>
     </div>
-
-    <div class="route-grid">
-
-      <div class="route">
-        <h3>🇧🇪 Brussels / Antwerp</h3>
-        <div class="meta">~1,050 km &nbsp;·&nbsp; approx. 9–10 h drive</div>
-        <ol>
-          <li>E40 east through <strong>Liège → Aachen</strong></li>
-          <li>A3/E35 south via <strong>Cologne → Frankfurt</strong></li>
-          <li>A5/A8 via <strong>Karlsruhe → Munich</strong></li>
-          <li>A8 east to <strong>Salzburg</strong></li>
-          <li>A10 south → exit <strong>Radstadt → Tauplitz</strong></li>
-        </ol>
-        <p class="note">Ideal split: stop overnight in Munich (~6 h from Brussels), then 2.5 h to Tauplitz.</p>
-      </div>
-
-      <div class="route">
-        <h3>🇳🇱 Amsterdam / Rotterdam</h3>
-        <div class="meta">~1,150 km &nbsp;·&nbsp; approx. 10–11 h drive</div>
-        <ol>
-          <li>A2/E35 south to <strong>Utrecht → Eindhoven</strong></li>
-          <li>A2 into Belgium, then E40 to <strong>Liège → Aachen</strong></li>
-          <li>A3/E35 via <strong>Cologne → Frankfurt</strong></li>
-          <li>A5/A8 via <strong>Karlsruhe → Munich</strong></li>
-          <li>A8 east to <strong>Salzburg</strong>, A10 south → <strong>Tauplitz</strong></li>
-        </ol>
-        <p class="note">A comfortable overnight in Cologne or Munich breaks the journey nicely.</p>
-      </div>
-
-      <div class="route">
-        <h3>🇩🇪 Munich</h3>
-        <div class="meta">~230 km &nbsp;·&nbsp; approx. 2.5 h drive</div>
-        <ol>
-          <li>A8 east to <strong>Salzburg</strong></li>
-          <li>A10 Tauernautobahn south</li>
-          <li>Exit <strong>Radstadt</strong>, B99 to <strong>Bad Mitterndorf</strong></li>
-          <li>5 km to <strong>Tauplitz</strong></li>
-        </ol>
-        <p class="note">The easiest gateway city — almost entirely motorway.</p>
-      </div>
-
-      <div class="route">
-        <h3>🇩🇪 Frankfurt</h3>
-        <div class="meta">~570 km &nbsp;·&nbsp; approx. 5–5.5 h drive</div>
-        <ol>
-          <li>A5 south to <strong>Karlsruhe</strong></li>
-          <li>A8 east via <strong>Stuttgart → Munich → Salzburg</strong></li>
-          <li>A10 south → exit <strong>Radstadt → Tauplitz</strong></li>
-        </ol>
-        <p class="note">Doable in one go — a very manageable day's drive.</p>
-      </div>
-
-      <div class="route">
-        <h3>🇩🇪 Cologne / Düsseldorf</h3>
-        <div class="meta">~820 km &nbsp;·&nbsp; approx. 7–8 h drive</div>
-        <ol>
-          <li>A3/E35 south via <strong>Frankfurt</strong></li>
-          <li>A5/A8 via <strong>Karlsruhe → Stuttgart → Munich</strong></li>
-          <li>A8 east to <strong>Salzburg</strong></li>
-          <li>A10 south → exit <strong>Radstadt → Tauplitz</strong></li>
-        </ol>
-        <p class="note">Easy one-day drive; or overnight in Munich for a leisurely pace.</p>
-      </div>
-
-      <div class="route">
-        <h3>🇩🇪 Berlin / Hamburg</h3>
-        <div class="meta">~870–1,000 km &nbsp;·&nbsp; approx. 8–9.5 h drive</div>
-        <ol>
-          <li>A9/A7 south to <strong>Munich</strong></li>
-          <li>A8 east to <strong>Salzburg</strong></li>
-          <li>A10 south → exit <strong>Radstadt → Tauplitz</strong></li>
-        </ol>
-        <p class="note">Berlin via A9 direct to Munich — mostly smooth motorway all the way.</p>
-      </div>
-
-    </div>
-
-    <p style="margin-top:2rem;">
-      <strong>By train:</strong> take an ICE or Railjet to <strong>Salzburg Hbf</strong> or
-      <strong>Stainach-Irdning</strong> station (on the Ennstal railway). From Stainach-Irdning
-      a taxi or bus to Tauplitz is about 20 minutes. Austrian trains (ÖBB) have direct night
-      trains from various cities too — a comfortable option if you prefer not to drive.
-    </p>
-    <p>
-      <strong>By plane:</strong> nearest airports are <strong>Salzburg</strong> (~90 min),
-      <strong>Graz</strong> (~90 min), <strong>Vienna</strong> (~3 h) and
-      <strong>Munich</strong> (~2.5 h).
-    </p>
   </section>
 </div>
 
@@ -651,6 +663,50 @@
     </div>
   </section>
 </div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Get in touch</h2>
+  <p>
+    Have a question about the apartment, the area, or availability?
+    Fill in the form below and your message will open in your email app, ready to send.
+  </p>
+
+  <div class="contact-form">
+    <form id="contact-form">
+      <div class="form-row two-col">
+        <div>
+          <label for="cf-name">Your name</label>
+          <input type="text" id="cf-name" name="name" placeholder="Jan De Wit" required />
+        </div>
+        <div>
+          <label for="cf-email">Your email</label>
+          <input type="email" id="cf-email" name="email" placeholder="jan@example.com" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="cf-subject">Subject</label>
+        <select id="cf-subject" name="subject">
+          <option value="Availability question">Availability question</option>
+          <option value="General question about the apartment">General question about the apartment</option>
+          <option value="Question about the area">Question about the area</option>
+          <option value="Directions help">Directions help</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" placeholder="Hello, I'd like to know..." required></textarea>
+      </div>
+      <p class="form-note">
+        Clicking "Send message" will open your email app with this message pre-filled,
+        addressed to <a href="mailto:alpenglueck.tauplitz@gmail.com">alpenglueck.tauplitz@gmail.com</a>.
+        No data is sent to any server or third party.
+      </p>
+      <button type="submit" class="btn-submit">Send message ✉️</button>
+    </form>
+  </div>
+</section>
 
 <hr />
 
@@ -721,6 +777,20 @@
       else if(e.key === 'ArrowRight') show(idx + 1);
     });
   })();
+
+  // Contact form → mailto
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name    = document.getElementById('cf-name').value.trim();
+    var email   = document.getElementById('cf-email').value.trim();
+    var subject = document.getElementById('cf-subject').value;
+    var message = document.getElementById('cf-message').value.trim();
+    var body    = 'Name: ' + name + '\nEmail: ' + email + '\n\n' + message;
+    window.location.href =
+      'mailto:alpenglueck.tauplitz@gmail.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body='    + encodeURIComponent(body);
+  });
 </script>
 
 </body>
