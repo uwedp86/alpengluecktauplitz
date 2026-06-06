@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alpenglück Tauplitz – Alpine Apartment</title>
-  <meta name="description" content="Cosy alpine apartment in Tauplitz, Austria. Book via Booking.com or Airbnb." />
+  <title>Alpenglück Tauplitz – Alpine Apartment in the Styrian Alps</title>
+  <meta name="description" content="Cosy alpine apartment in Tauplitz, Austria. Your base for the Tauplitzalm, Grundlsee, Hallstatt and the Dachstein. Book via Booking.com or Airbnb." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -12,12 +12,14 @@
       --green:  #3a6b4a;
       --green-light: #4e8c60;
       --cream:  #f7f3ee;
+      --tint:   #ecf1ec;
       --brown:  #6b4f3a;
       --text:   #2c2c2c;
       --muted:  #666;
       --radius: 12px;
     }
 
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Segoe UI', system-ui, sans-serif;
       color: var(--text);
@@ -25,11 +27,45 @@
       line-height: 1.6;
     }
 
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--green);
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: .8rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .4rem 1rem;
+    }
+    .nav-logo {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: .2px;
+    }
+    .nav nav { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+    .nav nav a {
+      color: rgba(255,255,255,.9);
+      text-decoration: none;
+      font-size: .95rem;
+      transition: color .15s;
+    }
+    .nav nav a:hover { color: #fff; text-decoration: underline; }
+
     /* ── HERO ── */
     .hero {
       position: relative;
-      height: 90vh;
-      min-height: 500px;
+      height: 82vh;
+      min-height: 460px;
       overflow: hidden;
       display: flex;
       align-items: flex-end;
@@ -40,19 +76,19 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 30%;
+      object-position: center 35%;
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.65) 0%, rgba(0,0,0,.1) 60%);
+      background: linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,.1) 55%);
     }
     .hero-text {
       position: relative;
       z-index: 1;
       padding: 2.5rem 2rem;
       color: #fff;
-      max-width: 700px;
+      max-width: 760px;
     }
     .hero-text h1 {
       font-size: clamp(2rem, 5vw, 3.2rem);
@@ -62,18 +98,23 @@
     }
     .hero-text p {
       margin-top: .6rem;
-      font-size: 1.1rem;
-      opacity: .9;
+      font-size: 1.15rem;
+      opacity: .92;
     }
 
     /* ── SECTIONS ── */
-    section { padding: 4rem 1.5rem; max-width: 900px; margin: 0 auto; }
+    section { padding: 3.5rem 1.5rem; max-width: 900px; margin: 0 auto; }
+    section[id] { scroll-margin-top: 70px; }
+    .band { width: 100%; }
+    .band-tint { background: var(--tint); }
+    .band-white { background: #fff; }
 
     h2 {
-      font-size: 1.7rem;
+      font-size: 1.75rem;
       color: var(--green);
       margin-bottom: 1rem;
     }
+    .lead { font-size: 1.08rem; }
     p { margin-bottom: 1rem; color: var(--text); }
 
     /* ── PHOTO GRID ── */
@@ -81,30 +122,162 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 12px;
-      padding: 2rem 1.5rem 0;
       max-width: 1100px;
-      margin: 0 auto;
+      margin: 1.5rem auto 0;
+    }
+    .gallery figure {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      cursor: zoom-in;
     }
     .gallery img {
       width: 100%;
       height: 220px;
       object-fit: cover;
-      border-radius: var(--radius);
       display: block;
+      transition: transform .35s ease;
+    }
+    .gallery figure:hover img { transform: scale(1.06); }
+    .gallery figcaption {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 1.4rem .9rem .7rem;
+      color: #fff;
+      font-size: .9rem;
+      background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    .gallery figure:hover figcaption { opacity: 1; }
+    .gallery-hint {
+      text-align: center;
+      font-size: .85rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.93);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 94%;
+      max-height: 88%;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 12px 50px rgba(0,0,0,.6);
+    }
+    .lb-btn {
+      position: absolute;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      user-select: none;
+    }
+    .lb-close { top: 1rem; right: 1.4rem; font-size: 2.6rem; }
+    .lb-nav   { top: 50%; transform: translateY(-50%); font-size: 3rem; padding: 0 1rem; }
+    .lb-prev  { left: .3rem; }
+    .lb-next  { right: .3rem; }
+    .lb-caption {
+      position: absolute;
+      bottom: 1.4rem; left: 0; right: 0;
+      text-align: center;
+      color: rgba(255,255,255,.92);
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+
+    /* ── GUIDE CARDS ── */
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.4rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.5rem 1.6rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      border-top: 4px solid var(--green);
+      display: flex;
+      flex-direction: column;
+    }
+    .card h3 {
+      color: var(--green);
+      font-size: 1.2rem;
+      margin-bottom: .55rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .badge {
+      align-self: flex-start;
+      background: var(--cream);
+      color: var(--brown);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+      padding: .22rem .65rem;
+      border-radius: 20px;
+      margin-bottom: .85rem;
+      text-transform: uppercase;
+    }
+    .card p { font-size: .96rem; margin-bottom: .6rem; }
+    .card .tip {
+      font-size: .85rem;
+      color: var(--muted);
+      border-left: 3px solid var(--green-light);
+      padding-left: .7rem;
+      margin-top: auto;
+    }
+
+    /* ── SEASONS ── */
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+      margin-top: 1.8rem;
+    }
+    .season {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 1.6rem 1.8rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .season h3 { font-size: 1.3rem; color: var(--green); margin-bottom: .8rem; }
+    .season ul { list-style: none; }
+    .season li {
+      padding: .35rem 0 .35rem 1.6rem;
+      position: relative;
+      font-size: .97rem;
+    }
+    .season li::before {
+      content: "›";
+      position: absolute;
+      left: .3rem;
+      color: var(--green-light);
+      font-weight: 700;
     }
 
     /* ── BOOK BUTTONS ── */
-    .book-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
+    .book-grid { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
     .btn {
       display: inline-flex;
       align-items: center;
       gap: .55rem;
-      padding: .85rem 1.6rem;
+      padding: .9rem 1.6rem;
       border-radius: 8px;
       font-size: 1rem;
       font-weight: 600;
@@ -114,7 +287,6 @@
     .btn:hover { opacity: .88; transform: translateY(-1px); }
     .btn-booking { background: #003580; color: #fff; }
     .btn-airbnb  { background: #ff385c; color: #fff; }
-
     .btn svg { width: 22px; height: 22px; flex-shrink: 0; fill: currentColor; }
 
     /* ── DIRECT BOOKING BOX ── */
@@ -126,14 +298,9 @@
       margin-top: 1.5rem;
     }
     .direct-box h3 { color: var(--green); margin-bottom: .6rem; font-size: 1.2rem; }
-    .direct-box a {
-      color: var(--green-light);
-      font-weight: 600;
-      word-break: break-all;
-    }
+    .direct-box a { color: var(--green-light); font-weight: 600; word-break: break-all; }
 
-    /* ── DIVIDER ── */
-    hr { border: none; border-top: 1px solid #ddd; margin: 0; }
+    hr { border: none; border-top: 1px solid #e2ddd4; margin: 0; }
 
     /* ── FOOTER ── */
     footer {
@@ -152,113 +319,280 @@
 </head>
 <body>
 
+<!-- NAV -->
+<header class="nav" id="top">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top">Alpenglück Tauplitz</a>
+    <nav>
+      <a href="#about">Apartment</a>
+      <a href="#photos">Photos</a>
+      <a href="#discover">Discover the area</a>
+      <a href="#seasons">Seasons</a>
+      <a href="#book">Book</a>
+    </nav>
+  </div>
+</header>
+
 <!-- HERO -->
 <div class="hero">
-  <img src="images/hero.jpg" alt="Snow-covered alpine landscape at sunset near Tauplitz" />
+  <img src="images/hero.jpg" alt="Snow-covered alpine landscape at sunset near Tauplitz, with the Grimming massif in the distance" />
   <div class="hero-overlay"></div>
   <div class="hero-text">
     <h1>Alpenglück Tauplitz</h1>
-    <p>Your cosy alpine retreat in the heart of the Styrian Alps, Austria</p>
+    <p>Your cosy alpine retreat in the heart of the Styrian Salzkammergut, Austria</p>
   </div>
 </div>
 
 <!-- ABOUT -->
-<section>
+<section id="about">
   <h2>About the apartment</h2>
-  <p>
-    Nestled in the charming village of Tauplitz, our apartment offers a warm and comfortable
-    base for both winter ski holidays and summer mountain adventures. Wake up to stunning
-    Alpine scenery, explore the famous Tauplitzalm plateau, and return to a welcoming home
-    after a day in the mountains.
+  <p class="lead">
+    Nestled in the charming village of Tauplitz and watched over by the mighty Grimming,
+    our apartment is a warm, comfortable base for both winter ski holidays and summer
+    mountain adventures.
   </p>
   <p>
-    Whether you're here for the slopes, the hiking trails, the alpine lakes, or simply
-    the fresh mountain air — Alpenglück Tauplitz has you covered in every season.
+    Wake up to fresh Alpine air, spend your days on the slopes, the lakes or the hiking
+    trails, and come home to a cosy, well-equipped space to recharge. Whether you are
+    chasing powder, mountain panoramas, crystal-clear lakes or simply some peace and
+    quiet, Alpenglück Tauplitz has you covered in every season.
   </p>
 </section>
-<hr />
 
-<!-- PHOTO GALLERY -->
-<div class="gallery">
-  <img src="images/lake.jpg"    alt="Alpine lake on the Tauplitzalm plateau" />
-  <img src="images/meadow.jpg"  alt="Wildflower meadow with mountain views" />
-  <img src="images/hiking.jpg"  alt="Hikers on a summer trail near Tauplitz" />
-  <img src="images/bedroom.jpg" alt="Cosy bedroom in the apartment" />
-  <img src="images/bedroom02.jpg" alt="2 single beds in the apartment" />
-  <img src="images/shower.jpg" alt="Large shower in the apartment" />
-  <img src="images/toilet.jpg" alt="Toilet in the apartment" />
-  <img src="images/livingroom.jpg" alt="Livngroom in the apartment" />
-  <img src="images/kitchen.jpg" alt="Kitchen in the apartment" />
-  <img src="images/bedroom03.jpg" alt="3th bedroom in the apartment" />
-  <img src="images/diningroom.jpg" alt="Dining room in the apartment" />
-  <img src="images/exterior01.jpg" alt="Exterior of the apartment" />
-  <img src="images/hallway.jpg" alt="Hallway in the apartment" />
-  <img src="images/flora01.jpg" alt="Flowers of the area" />
-  <img src="images/flora02.jpg" alt="Flowers of the area" />
+<!-- PHOTOS -->
+<div class="band band-white">
+  <section id="photos">
+    <h2>Impressions</h2>
+    <p>A glimpse of the apartment and the landscapes that surround it. Click any photo to enlarge.</p>
+    <div class="gallery">
+      <figure>
+        <img src="images/lake.jpg" alt="Mountain lake on the Tauplitzalm plateau" />
+        <figcaption>A mountain lake on the Tauplitzalm plateau</figcaption>
+      </figure>
+      <figure>
+        <img src="images/meadow.jpg" alt="Alpine wildflower meadow with mountain peaks" />
+        <figcaption>Wildflower meadows in early summer</figcaption>
+      </figure>
+      <figure>
+        <img src="images/hiking.jpg" alt="Two hikers on a summer trail near Tauplitz" />
+        <figcaption>Endless hiking trails on your doorstep</figcaption>
+      </figure>
+      <figure>
+        <img src="images/bedroom.jpg" alt="Cosy bedroom inside the apartment" />
+        <figcaption>A cosy night's rest in the apartment</figcaption>
+      </figure>
+    </div>
+    <p class="gallery-hint">Tip: use ← and → to browse, or press Esc to close.</p>
+  </section>
 </div>
 
-<!-- BOOK SECTION -->
-<section>
-  <h2>Book your stay</h2>
-  <p>
-    Reserve your dates securely through one of the trusted platforms below.
-    Both offer guest protection, clear cancellation policies, and verified reviews.
-  </p>
-
-  <div class="book-grid">
-    <!-- Booking.com -->
-    <a class="btn btn-booking"
-       href="https://www.booking.com/Share-NSsUTZE"
-       target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M17.33 3H6.67A3.67 3.67 0 0 0 3 6.67v10.66A3.67 3.67 0 0 0 6.67 21h10.66A3.67 3.67 0 0 0 21 17.33V6.67A3.67 3.67 0 0 0 17.33 3zm-5.16 12.5H9.5V8.5h2.67c1.93 0 3.16 1 3.16 2.67a2.37 2.37 0 0 1-1.27 2.17l1.44 2.16h-1.93l-1.2-1.83h-.2v1.83zm0-3.17h-.5v-1.66h.5c.67 0 1 .33 1 .83s-.33.83-1 .83z"/>
-      </svg>
-      View on Booking.com
-    </a>
-
-    <!-- Airbnb -->
-    <a class="btn btn-airbnb"
-       href="https://www.airbnb.be/rooms/51036211?guests=1&adults=1&s=67&unique_share_id=4e15bfca-5d18-45ab-be7b-5f35f5af99cb"
-       target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm5 13H7v-1c0-2.67 3.34-4 5-4s5 1.33 5 4v1z"/>
-      </svg>
-      View on Airbnb
-    </a>
-  </div>
-
-  <!-- DIRECT BOOKING -->
-  <div class="direct-box">
-    <h3>Returning guests, family &amp; friends</h3>
-    <p>
-      If you have stayed with us before, or are a family member or friend,
-      you are welcome to reach out directly to arrange your stay without
-      going through a platform:
+<!-- DISCOVER -->
+<div class="band band-tint">
+  <section id="discover">
+    <h2>Discover Tauplitz &amp; the Ausseerland</h2>
+    <p class="lead">
+      Tauplitz sits in the Ausseerland–Salzkammergut, one of the most beautiful corners of
+      Austria — a landscape of turquoise lakes, limestone peaks and storybook villages,
+      much of it UNESCO World Heritage. Here is what you can reach from the apartment.
     </p>
-    <p>
-      <a href="mailto:alpenglueck.tauplitz@gmail.com">alpenglueck.tauplitz@gmail.com</a>
-    </p>
-    <p style="font-size:.9rem; color:var(--muted); margin-bottom:0;">
-      Please note: direct bookings are reserved for known guests. First-time visitors
-      are kindly asked to book via Booking.com or Airbnb.
-    </p>
+
+    <div class="guide-grid">
+
+      <div class="card">
+        <h3>🏔️ Tauplitzalm &amp; the Six Lakes</h3>
+        <span class="badge">On your doorstep</span>
+        <p>
+          The Tauplitzalm is one of the largest high plateaus in the Alps, lying between
+          roughly 1,650 and 1,965 m. In summer the famous <strong>Six-Lakes Walk
+          (6-Seen-Wanderung)</strong> winds past the Steirersee, Großsee, Schwarzensee,
+          Tauplitzsee, Krukensee and the tiny Märchensee ("Fairytale Lake"). Reach the
+          plateau by chairlift from the village or via the panoramic Alpine toll road.
+        </p>
+        <p class="tip">Tip: the Six-Lakes Walk takes about 3–4 hours and suits reasonably fit families.</p>
+      </div>
+
+      <div class="card">
+        <h3>🛶 Grundlsee &amp; the Three-Lakes Tour</h3>
+        <span class="badge">~25 min</span>
+        <p>
+          The largest lake in Styria, nicknamed the <strong>"Styrian Sea"</strong>. Swim in
+          its clear water, or take the classic <strong>Three-Lakes Tour</strong> by
+          traditional wooden boat: Grundlsee → the mysterious <strong>Toplitzsee</strong>
+          (wrapped in legends of sunken wartime treasure) → the remote Kammersee, source
+          of the river Traun.
+        </p>
+        <p class="tip">Tip: combine the boat tour with a lakeside lunch in Gössl.</p>
+      </div>
+
+      <div class="card">
+        <h3>🏘️ Hallstatt – UNESCO Heritage</h3>
+        <span class="badge">~45 min</span>
+        <p>
+          Perhaps the most photographed village in the world, clinging to a steep
+          mountainside above its lake. Wander the tiny lanes, descend into the
+          <strong>world's oldest salt mine</strong>, ride up to the <strong>Skywalk
+          "Welterbeblick"</strong> for the postcard view, and visit the curious Bone House
+          beside the church.
+        </p>
+        <p class="tip">Tip: arrive early morning or late afternoon to beat the day-trip crowds.</p>
+      </div>
+
+      <div class="card">
+        <h3>🚠 Dachstein &amp; Krippenstein</h3>
+        <span class="badge">~40 min</span>
+        <p>
+          Ride the cable car from Obertraun up to the <strong>Krippenstein</strong> and the
+          thrilling <strong>5 Fingers</strong> viewing platform jutting over a sheer drop.
+          Explore the giant <strong>Dachstein Ice Cave</strong> and Mammoth Cave, or head
+          for the glacier with its suspension bridge, "Stairway to Nothingness" and ice
+          palace.
+        </p>
+        <p class="tip">Tip: bring a warm layer — it stays cold in the ice caves all summer.</p>
+      </div>
+
+      <div class="card">
+        <h3>🌼 Bad Aussee &amp; Altaussee</h3>
+        <span class="badge">~20 min</span>
+        <p>
+          <strong>Bad Aussee</strong>, the spa town at the geographic heart of Austria,
+          bursts into colour each spring for the <strong>Narzissenfest</strong> (Daffodil
+          Festival). Nearby <strong>Altaussee</strong> has one of the region's prettiest
+          lakes, the dramatic <strong>Loser</strong> panoramic road, and a salt mine that
+          famously hid looted masterpieces during WWII.
+        </p>
+        <p class="tip">Tip: drive the Loser Panoramastraße for jaw-dropping views over the lakes.</p>
+      </div>
+
+      <div class="card">
+        <h3>🎿 The Kulm – Ski Flying Arena</h3>
+        <span class="badge">~10 min</span>
+        <p>
+          Just down the valley near Bad Mitterndorf stands the <strong>Kulm</strong>, one
+          of the largest ski-flying hills on the planet, which periodically hosts the
+          Ski Flying World Championships. Even out of season, the sheer scale of the
+          structure is breathtaking.
+        </p>
+        <p class="tip">Tip: check the events calendar — a flying competition is an unforgettable spectacle.</p>
+      </div>
+
+      <div class="card">
+        <h3>♨️ Bad Mitterndorf &amp; GrimmingTherme</h3>
+        <span class="badge">~5 min</span>
+        <p>
+          Your nearest town for shops, cafés and restaurants — and home to the modern
+          <strong>GrimmingTherme</strong> thermal spa. It is the perfect way to soothe
+          tired muscles after a day on the mountain, all under the gaze of the
+          <strong>Grimming</strong>, the "lonely giant" and signature peak of the region.
+        </p>
+        <p class="tip">Tip: a rainy-day favourite — pools, saunas and relaxation areas.</p>
+      </div>
+
+      <div class="card">
+        <h3>🗺️ More to explore</h3>
+        <span class="badge">Nearby</span>
+        <p>
+          <strong>Pürgg</strong>, the "Cradle of Styria", a hilltop village with
+          12th-century frescoes • the turquoise <strong>Salza reservoir</strong> • the
+          quiet swimming lake <strong>Ödensee</strong> • and neighbouring ski areas
+          <strong>Riesneralm</strong> and <strong>Planneralm</strong> for more pistes and
+          trails.
+        </p>
+        <p class="tip">Tip: ask us for our personal favourites — happy to share local secrets.</p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- SEASONS -->
+<section id="seasons">
+  <h2>Every season has its magic</h2>
+  <div class="season-grid">
+    <div class="season">
+      <h3>❄️ Winter</h3>
+      <ul>
+        <li>Skiing &amp; snowboarding on the Tauplitz (≈ 40 km of pistes)</li>
+        <li>Cross-country skiing &amp; winter walking trails</li>
+        <li>Ski touring &amp; snowshoeing across the plateau</li>
+        <li>Tobogganing fun for the whole family</li>
+        <li>Ski-flying spectacles at the Kulm</li>
+        <li>Thermal spa days at the GrimmingTherme</li>
+      </ul>
+    </div>
+    <div class="season">
+      <h3>☀️ Summer</h3>
+      <ul>
+        <li>The Six-Lakes Walk on the Tauplitzalm</li>
+        <li>Swimming &amp; boat tours on Grundlsee and Altaussee</li>
+        <li>Day trips to Hallstatt &amp; the Dachstein</li>
+        <li>Mountain biking &amp; road cycling</li>
+        <li>Via ferrata &amp; alpine climbing</li>
+        <li>Salt mines, mountain huts and village festivals</li>
+      </ul>
+    </div>
   </div>
 </section>
+
+<!-- BOOK -->
+<div class="band band-white">
+  <section id="book">
+    <h2>Book your stay</h2>
+    <p>
+      Reserve your dates securely through one of the trusted platforms below.
+      Both offer guest protection, clear cancellation policies, and verified reviews.
+    </p>
+
+    <div class="book-grid">
+      <a class="btn btn-booking"
+         href="https://www.booking.com/Share-NSsUTZE"
+         target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17.33 3H6.67A3.67 3.67 0 0 0 3 6.67v10.66A3.67 3.67 0 0 0 6.67 21h10.66A3.67 3.67 0 0 0 21 17.33V6.67A3.67 3.67 0 0 0 17.33 3zm-5.16 12.5H9.5V8.5h2.67c1.93 0 3.16 1 3.16 2.67a2.37 2.37 0 0 1-1.27 2.17l1.44 2.16h-1.93l-1.2-1.83h-.2v1.83zm0-3.17h-.5v-1.66h.5c.67 0 1 .33 1 .83s-.33.83-1 .83z"/>
+        </svg>
+        View on Booking.com
+      </a>
+
+      <a class="btn btn-airbnb"
+         href="https://www.airbnb.be/rooms/51036211?guests=1&adults=1&s=67&unique_share_id=4e15bfca-5d18-45ab-be7b-5f35f5af99cb"
+         target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm5 13H7v-1c0-2.67 3.34-4 5-4s5 1.33 5 4v1z"/>
+        </svg>
+        View on Airbnb
+      </a>
+    </div>
+
+    <div class="direct-box">
+      <h3>Returning guests, family &amp; friends</h3>
+      <p>
+        If you have stayed with us before, or are a family member or friend,
+        you are welcome to reach out directly to arrange your stay without
+        going through a platform:
+      </p>
+      <p>
+        <a href="mailto:alpenglueck.tauplitz@gmail.com">alpenglueck.tauplitz@gmail.com</a>
+      </p>
+      <p style="font-size:.9rem; color:var(--muted); margin-bottom:0;">
+        Please note: direct bookings are reserved for known guests. First-time visitors
+        are kindly asked to book via Booking.com or Airbnb.
+      </p>
+    </div>
+  </section>
+</div>
 
 <hr />
 
 <!-- LOCATION -->
-<section>
-  <h2>Location</h2>
+<section id="location">
+  <h2>Getting here</h2>
   <p>
-    Tauplitz is a small alpine village in Styria, Austria, situated at around 900 m altitude.
-    It is the gateway to the Tauplitzalm (1,650 m), a beautiful high plateau with ski slopes
-    in winter and walking trails, mountain lakes, and wildlife in summer.
+    Tauplitz is a small alpine village in Styria, Austria, at around 900 m altitude, and
+    the gateway to the Tauplitzalm plateau (up to 1,965 m).
   </p>
   <p>
-    Nearest ski resort: <strong>Tauplitz–Bad Mitterndorf</strong><br />
     Nearest town: <strong>Bad Mitterndorf</strong> (~5 km)<br />
-    Nearest city: <strong>Liezen</strong> (~25 km) &nbsp;|&nbsp; <strong>Graz</strong> (~120 km)
+    Nearest train station: <strong>Bad Mitterndorf–Heilbrunn</strong> / <strong>Stainach-Irdning</strong><br />
+    Nearest cities: <strong>Liezen</strong> (~25 km) &nbsp;|&nbsp; <strong>Graz</strong> (~120 km) &nbsp;|&nbsp; <strong>Salzburg</strong> (~110 km)
   </p>
 </section>
 
@@ -270,10 +604,64 @@
     <a href="privacy.html">Privacy Policy</a>
   </p>
   <p style="margin-top:.4rem; font-size:.8rem;">
-    This site does not use cookies or tracking. Booking links lead to external platforms.
+    This site does not use cookies or tracking, and loads no external content. Booking links lead to external platforms.
   </p>
-  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-btn lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-btn lb-nav lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+  <img id="lb-img" src="" alt="" />
+  <button class="lb-btn lb-nav lb-next" id="lb-next" aria-label="Next">&#8250;</button>
+  <div class="lb-caption" id="lb-caption"></div>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  (function () {
+    var figs = Array.prototype.slice.call(document.querySelectorAll('.gallery figure'));
+    var imgs = figs.map(function (f) { return f.querySelector('img'); });
+    var lb     = document.getElementById('lightbox');
+    var lbImg  = document.getElementById('lb-img');
+    var lbCap  = document.getElementById('lb-caption');
+    var idx = 0;
+
+    function show(i) {
+      idx = (i + imgs.length) % imgs.length;
+      lbImg.src = imgs[idx].src;
+      lbImg.alt = imgs[idx].alt;
+      lbCap.textContent = imgs[idx].alt;
+    }
+    function open(i) {
+      show(i);
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    figs.forEach(function (fig, i) {
+      fig.addEventListener('click', function () { open(i); });
+    });
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
+    document.getElementById('lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+  })();
+</script>
 
 </body>
 </html>
