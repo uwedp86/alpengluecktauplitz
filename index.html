@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alpenglück Tauplitz – Alpine Apartment in the Styrian Alps</title>
+  <title data-i18n="page_title">Alpenglück Tauplitz – Alpine Apartment in the Styrian Alps</title>
   <meta name="description" content="Cosy alpine apartment in Tauplitz, Austria. Your base for the Tauplitzalm, Grundlsee, Hallstatt and the Dachstein. Book via Booking.com or Airbnb." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -280,6 +280,16 @@
     }
     footer a { color:#c8e6c9; text-decoration:underline; }
 
+    .lang-switch { display:flex; gap:.3rem; }
+    .lang-switch button {
+      background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3);
+      color:rgba(255,255,255,.85); border-radius:4px; padding:.2rem .5rem;
+      font-size:.78rem; font-weight:600; cursor:pointer; transition:background .15s;
+      letter-spacing:.5px;
+    }
+    .lang-switch button:hover { background:rgba(255,255,255,.25); }
+    .lang-switch button.active { background:#fff; color:var(--green); }
+
     @media (max-width:520px) {
       .btn { width:100%; justify-content:center; }
       .gallery { grid-template-columns:1fr 1fr; }
@@ -294,14 +304,20 @@
   <div class="nav-inner">
     <a class="nav-logo" href="#top">Alpenglück Tauplitz</a>
     <nav>
-      <a href="#about">Apartment</a>
-      <a href="#photos">Photos</a>
-      <a href="#discover">Discover</a>
-      <a href="#seasons">Seasons</a>
-      <a href="#getting-here">Location</a>
-      <a href="#book">Book</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-i18n="nav_apt">Apartment</a>
+      <a href="#photos" data-i18n="nav_photos">Photos</a>
+      <a href="#discover" data-i18n="nav_discover">Discover</a>
+      <a href="#seasons" data-i18n="nav_seasons">Seasons</a>
+      <a href="#getting-here" data-i18n="nav_location">Location</a>
+      <a href="#book" data-i18n="nav_book">Book</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
+    <div class="lang-switch">
+      <button onclick="setLang('en')" data-lang="en">EN</button>
+      <button onclick="setLang('de')" data-lang="de">DE</button>
+      <button onclick="setLang('nl')" data-lang="nl">NL</button>
+      <button onclick="setLang('cs')" data-lang="cs">CS</button>
+    </div>
   </div>
 </header>
 
@@ -311,25 +327,25 @@
   <div class="hero-overlay"></div>
   <div class="hero-text">
     <h1>Alpenglück Tauplitz</h1>
-    <p>Your cosy alpine retreat in the heart of the Styrian Salzkammergut, Austria</p>
+    <p data-i18n="hero_sub">Your cosy alpine retreat in the heart of the Styrian Salzkammergut, Austria</p>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-  <h2>About the apartment</h2>
-  <p class="lead">
+  <h2 data-i18n="about_h2">About the apartment</h2>
+  <p class="lead" data-i18n="about_p1">
     Nestled in the charming village of Tauplitz and watched over by the mighty Grimming,
     our apartment is a warm, comfortable base for both winter ski holidays and summer
     mountain adventures.
   </p>
-  <p>
+  <p data-i18n="about_p2">
     Wake up to fresh Alpine air, spend your days on the slopes, the lakes or the hiking
     trails, and come home to a fully equipped, cosy space to recharge. The apartment
     includes a well-fitted kitchen, bright living and dining area, comfortable bedrooms,
     and a modern bathroom — everything you need for a relaxing mountain stay.
   </p>
-  <p>
+  <p data-i18n="about_p3">
     Whether you are chasing powder, mountain panoramas, crystal-clear lakes or simply some
     peace and quiet, Alpenglück Tauplitz has you covered in every season.
   </p>
@@ -338,11 +354,11 @@
 <!-- PHOTOS -->
 <div class="band band-white" id="photos">
   <section style="padding-bottom:1rem;">
-    <h2>Impressions</h2>
-    <p>Click any photo to enlarge. Use ← → to browse, Esc to close.</p>
+    <h2 data-i18n="photos_h2">Impressions</h2>
+    <p data-i18n="photos_p">Click any photo to enlarge. Use ← → to browse, Esc to close.</p>
   </section>
 
-  <p class="gallery-label">The apartment</p>
+  <p class="gallery-label" data-i18n="gallery_apt">The apartment</p>
   <div class="gallery" id="gallery-apt">
     <figure>
       <img src="images/exterior01.jpg" alt="Exterior of the apartment building" />
@@ -382,7 +398,7 @@
     </figure>
   </div>
 
-  <p class="gallery-label" style="margin-top:2rem;">The region</p>
+  <p class="gallery-label" style="margin-top:2rem;" data-i18n="gallery_region">The region</p>
   <div class="gallery" id="gallery-region">
     <figure>
       <img src="images/lake.jpg" alt="Mountain lake on the Tauplitzalm plateau" />
@@ -405,14 +421,14 @@
       <figcaption>Endless hiking trails on your doorstep</figcaption>
     </figure>
   </div>
-  <p class="gallery-hint" style="margin-bottom:2rem;">All photos were taken in and around Tauplitz.</p>
+  <p class="gallery-hint" style="margin-bottom:2rem;" data-i18n="gallery_hint">All photos were taken in and around Tauplitz.</p>
 </div>
 
 <!-- DISCOVER -->
 <div class="band band-tint">
   <section id="discover">
-    <h2>Discover Tauplitz &amp; the Ausseerland</h2>
-    <p class="lead">
+    <h2 data-i18n="discover_h2">Discover Tauplitz &amp; the Ausseerland</h2>
+    <p class="lead" data-i18n="discover_lead">
       Tauplitz sits in the Ausseerland–Salzkammergut, one of the most beautiful corners of
       Austria — a landscape of turquoise lakes, limestone peaks and storybook villages,
       much of it UNESCO World Heritage. Here is what awaits you.
@@ -421,100 +437,100 @@
     <div class="guide-grid">
 
       <div class="card">
-        <h3>🏔️ Tauplitzalm &amp; the Six Lakes</h3>
-        <span class="badge">On your doorstep</span>
-        <p>
+        <h3 data-i18n="c1_h3">🏔️ Tauplitzalm &amp; the Six Lakes</h3>
+        <span class="badge" data-i18n="c1_badge">On your doorstep</span>
+        <p data-i18n-html="c1_p_html">
           One of the largest high plateaus in the Alps (1,650–1,965 m). The famous
           <strong>Six-Lakes Walk (6-Seen-Wanderung)</strong> winds past the Steirersee,
           Großsee, Schwarzensee, Tauplitzsee, Krukensee and the tiny Märchensee
           ("Fairytale Lake"). Reach the plateau by chairlift or the scenic toll road.
         </p>
-        <p class="tip">Tip: about 3–4 hours, suitable for fit families. Combine with lunch at a Alm hut.</p>
+        <p class="tip" data-i18n="c1_tip">Tip: about 3–4 hours, suitable for fit families. Combine with lunch at a Alm hut.</p>
       </div>
 
       <div class="card">
-        <h3>🛶 Grundlsee &amp; the Three-Lakes Tour</h3>
-        <span class="badge">~25 min</span>
-        <p>
+        <h3 data-i18n="c2_h3">🛶 Grundlsee &amp; the Three-Lakes Tour</h3>
+        <span class="badge" data-i18n="c2_badge">~25 min</span>
+        <p data-i18n-html="c2_p_html">
           The largest lake in Styria, the "Styrian Sea". Take the classic
           <strong>Three-Lakes Tour</strong> by traditional wooden boat: Grundlsee →
           the mysterious <strong>Toplitzsee</strong> (sunken wartime treasure legends) →
           the remote Kammersee, source of the river Traun.
         </p>
-        <p class="tip">Tip: combine the boat tour with a lakeside lunch in Gössl.</p>
+        <p class="tip" data-i18n="c2_tip">Tip: combine the boat tour with a lakeside lunch in Gössl.</p>
       </div>
 
       <div class="card">
-        <h3>🏘️ Hallstatt – UNESCO Heritage</h3>
-        <span class="badge">~45 min</span>
-        <p>
+        <h3 data-i18n="c3_h3">🏘️ Hallstatt – UNESCO Heritage</h3>
+        <span class="badge" data-i18n="c3_badge">~45 min</span>
+        <p data-i18n-html="c3_p_html">
           Perhaps the most photographed village in the world, clinging to a steep
           mountainside above its lake. Visit the <strong>world's oldest salt mine</strong>,
           ride up to the <strong>Skywalk "Welterbeblick"</strong> for the iconic view,
           and see the curious Bone House beside the church.
         </p>
-        <p class="tip">Tip: arrive early morning or late afternoon to beat the day-trip crowds.</p>
+        <p class="tip" data-i18n="c3_tip">Tip: arrive early morning or late afternoon to beat the day-trip crowds.</p>
       </div>
 
       <div class="card">
-        <h3>🚠 Dachstein &amp; Krippenstein</h3>
-        <span class="badge">~40 min</span>
-        <p>
+        <h3 data-i18n="c4_h3">🚠 Dachstein &amp; Krippenstein</h3>
+        <span class="badge" data-i18n="c4_badge">~40 min</span>
+        <p data-i18n-html="c4_p_html">
           Cable car from Obertraun up to <strong>Krippenstein</strong> and the thrilling
           <strong>5 Fingers</strong> viewing platform over a sheer drop. Explore the
           <strong>Dachstein Ice Cave</strong> and Mammoth Cave, or head for the glacier
           with its suspension bridge and "Stairway to Nothingness".
         </p>
-        <p class="tip">Tip: bring a warm layer — the ice caves stay cold all summer.</p>
+        <p class="tip" data-i18n="c4_tip">Tip: bring a warm layer — the ice caves stay cold all summer.</p>
       </div>
 
       <div class="card">
-        <h3>🌼 Bad Aussee &amp; Altaussee</h3>
-        <span class="badge">~20 min</span>
-        <p>
+        <h3 data-i18n="c5_h3">🌼 Bad Aussee &amp; Altaussee</h3>
+        <span class="badge" data-i18n="c5_badge">~20 min</span>
+        <p data-i18n-html="c5_p_html">
           <strong>Bad Aussee</strong>, at the geographic heart of Austria, is famous for
           its spring <strong>Narzissenfest</strong> (Daffodil Festival). Nearby
           <strong>Altaussee</strong> has a stunning lake, the dramatic
           <strong>Loser Panoramastraße</strong>, and a salt mine that hid looted
           artworks during WWII.
         </p>
-        <p class="tip">Tip: drive the Loser Panoramastraße for jaw-dropping lake views.</p>
+        <p class="tip" data-i18n="c5_tip">Tip: drive the Loser Panoramastraße for jaw-dropping lake views.</p>
       </div>
 
       <div class="card">
-        <h3>🎿 The Kulm – Ski Flying Arena</h3>
-        <span class="badge">~10 min</span>
-        <p>
+        <h3 data-i18n="c6_h3">🎿 The Kulm – Ski Flying Arena</h3>
+        <span class="badge" data-i18n="c6_badge">~10 min</span>
+        <p data-i18n-html="c6_p_html">
           One of the largest ski-flying hills on the planet, near Bad Mitterndorf.
           Periodically hosts the <strong>Ski Flying World Championships</strong> —
           athletes fly over 200 m through the air. Even out of season, the scale
           is breathtaking to see.
         </p>
-        <p class="tip">Tip: a flying competition is an unforgettable spectacle to watch live.</p>
+        <p class="tip" data-i18n="c6_tip">Tip: a flying competition is an unforgettable spectacle to watch live.</p>
       </div>
 
       <div class="card">
-        <h3>♨️ Bad Mitterndorf &amp; GrimmingTherme</h3>
-        <span class="badge">~5 min</span>
-        <p>
+        <h3 data-i18n="c7_h3">♨️ Bad Mitterndorf &amp; GrimmingTherme</h3>
+        <span class="badge" data-i18n="c7_badge">~5 min</span>
+        <p data-i18n-html="c7_p_html">
           Your nearest town for shops, cafés and restaurants — and home to the
           <strong>GrimmingTherme</strong> thermal spa. Perfect for soothing tired
           muscles after a mountain day, all under the gaze of the
           <strong>Grimming</strong>, the "lonely giant" peak of the region.
         </p>
-        <p class="tip">Tip: the ideal rainy-day option — indoor pools, saunas and relaxation areas.</p>
+        <p class="tip" data-i18n="c7_tip">Tip: the ideal rainy-day option — indoor pools, saunas and relaxation areas.</p>
       </div>
 
       <div class="card">
-        <h3>🗺️ More to explore</h3>
-        <span class="badge">Nearby</span>
-        <p>
+        <h3 data-i18n="c8_h3">🗺️ More to explore</h3>
+        <span class="badge" data-i18n="c8_badge">Nearby</span>
+        <p data-i18n-html="c8_p_html">
           <strong>Pürgg</strong>, the "Cradle of Styria" with 12th-century frescoes •
           the turquoise <strong>Salza reservoir</strong> •
           the quiet swimming lake <strong>Ödensee</strong> •
           neighbouring ski areas <strong>Riesneralm</strong> and <strong>Planneralm</strong>.
         </p>
-        <p class="tip">Tip: ask us for our personal favourites — happy to share local secrets.</p>
+        <p class="tip" data-i18n="c8_tip">Tip: ask us for our personal favourites — happy to share local secrets.</p>
       </div>
 
     </div>
@@ -523,28 +539,28 @@
 
 <!-- SEASONS -->
 <section id="seasons">
-  <h2>Every season has its magic</h2>
+  <h2 data-i18n="seasons_h2">Every season has its magic</h2>
   <div class="season-grid">
     <div class="season">
-      <h3>❄️ Winter</h3>
+      <h3 data-i18n="winter_h3">❄️ Winter</h3>
       <ul>
-        <li>Skiing &amp; snowboarding on the Tauplitz (≈ 40 km of pistes)</li>
-        <li>Cross-country skiing &amp; winter walking trails</li>
-        <li>Ski touring &amp; snowshoeing across the plateau</li>
-        <li>Tobogganing — great fun for the whole family</li>
-        <li>Ski-flying spectacles at the Kulm</li>
-        <li>Thermal spa days at the GrimmingTherme</li>
+        <li data-i18n="w1">Skiing &amp; snowboarding on the Tauplitz (≈ 40 km of pistes)</li>
+        <li data-i18n="w2">Cross-country skiing &amp; winter walking trails</li>
+        <li data-i18n="w3">Ski touring &amp; snowshoeing across the plateau</li>
+        <li data-i18n="w4">Tobogganing — great fun for the whole family</li>
+        <li data-i18n="w5">Ski-flying spectacles at the Kulm</li>
+        <li data-i18n="w6">Thermal spa days at the GrimmingTherme</li>
       </ul>
     </div>
     <div class="season">
-      <h3>☀️ Summer</h3>
+      <h3 data-i18n="summer_h3">☀️ Summer</h3>
       <ul>
-        <li>The Six-Lakes Walk on the Tauplitzalm</li>
-        <li>Swimming &amp; boat tours on Grundlsee and Altaussee</li>
-        <li>Day trips to Hallstatt &amp; the Dachstein</li>
-        <li>Mountain biking &amp; road cycling</li>
-        <li>Via ferrata &amp; alpine climbing</li>
-        <li>Salt mines, mountain huts and village festivals</li>
+        <li data-i18n="s1">The Six-Lakes Walk on the Tauplitzalm</li>
+        <li data-i18n="s2">Swimming &amp; boat tours on Grundlsee and Altaussee</li>
+        <li data-i18n="s3">Day trips to Hallstatt &amp; the Dachstein</li>
+        <li data-i18n="s4">Mountain biking &amp; road cycling</li>
+        <li data-i18n="s5">Via ferrata &amp; alpine climbing</li>
+        <li data-i18n="s6">Salt mines, mountain huts and village festivals</li>
       </ul>
     </div>
   </div>
@@ -553,8 +569,8 @@
 <!-- LOCATION -->
 <div class="band band-tint">
   <section id="getting-here">
-    <h2>Location</h2>
-    <p class="lead">
+    <h2 data-i18n="loc_h2">Location</h2>
+    <p class="lead" data-i18n="loc_lead">
       Tauplitz is a small alpine village in the heart of the Styrian Salzkammergut, Austria —
       easy to reach by car from Belgium, the Netherlands and Germany, mostly via motorway.
     </p>
@@ -597,22 +613,23 @@
           <div>
             <strong>Tauplitz</strong><br />
             8982 Bad Mitterndorf<br />
-            Steiermark, Austria
+            <span data-i18n="map_line3">Steiermark, Austria</span>
           </div>
         </div>
         <div class="map-facts">
-          <div class="map-fact">✈️ <span>Salzburg Airport — ~90 min</span></div>
-          <div class="map-fact">✈️ <span>Graz Airport — ~90 min</span></div>
-          <div class="map-fact">🚗 <span>Munich — ~2.5 h via A8/A10</span></div>
-          <div class="map-fact">🚗 <span>Brussels — ~9–10 h via E40/A8/A10</span></div>
-          <div class="map-fact">🚂 <span>Train to Stainach-Irdning, then taxi ~20 min</span></div>
+          <div class="map-fact" data-i18n="fact1">✈️ Salzburg Airport — ~90 min</div>
+          <div class="map-fact" data-i18n="fact2">✈️ Graz Airport — ~90 min</div>
+          <div class="map-fact" data-i18n="fact3">🚗 Munich — ~2.5 h via A8/A10</div>
+          <div class="map-fact" data-i18n="fact4">🚗 Brussels — ~9–10 h via E40/A8/A10</div>
+          <div class="map-fact" data-i18n="fact5">🚂 Train to Stainach-Irdning, then taxi ~20 min</div>
+
         </div>
         <a class="map-btn"
            href="https://www.openstreetmap.org/?mlat=47.553&mlon=13.973&zoom=13"
-           target="_blank" rel="noopener noreferrer">
+           target="_blank" rel="noopener noreferrer" data-i18n="map_btn">
           Open map &amp; get directions ↗
         </a>
-        <p class="map-contact-note">
+        <p class="map-contact-note" data-i18n-html="map_note_html">
           Need help planning your route?
           <a href="#contact">Send us a message</a> — we're happy to help.
         </p>
@@ -624,8 +641,8 @@
 <!-- BOOK -->
 <div class="band band-white">
   <section id="book">
-    <h2>Book your stay</h2>
-    <p>
+    <h2 data-i18n="book_h2">Book your stay</h2>
+    <p data-i18n="book_p">
       Reserve your dates securely through one of the trusted platforms below.
       Both offer guest protection, clear cancellation policies, and verified reviews.
     </p>
@@ -636,7 +653,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M17.33 3H6.67A3.67 3.67 0 0 0 3 6.67v10.66A3.67 3.67 0 0 0 6.67 21h10.66A3.67 3.67 0 0 0 21 17.33V6.67A3.67 3.67 0 0 0 17.33 3zm-5.16 12.5H9.5V8.5h2.67c1.93 0 3.16 1 3.16 2.67a2.37 2.37 0 0 1-1.27 2.17l1.44 2.16h-1.93l-1.2-1.83h-.2v1.83zm0-3.17h-.5v-1.66h.5c.67 0 1 .33 1 .83s-.33.83-1 .83z"/>
         </svg>
-        View on Booking.com
+        <span data-i18n="btn_booking">View on Booking.com</span>
       </a>
       <a class="btn btn-airbnb"
          href="https://www.airbnb.be/rooms/51036211?guests=1&adults=1&s=67&unique_share_id=4e15bfca-5d18-45ab-be7b-5f35f5af99cb"
@@ -644,19 +661,19 @@
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm5 13H7v-1c0-2.67 3.34-4 5-4s5 1.33 5 4v1z"/>
         </svg>
-        View on Airbnb
+        <span data-i18n="btn_airbnb">View on Airbnb</span>
       </a>
     </div>
     <div class="direct-box">
-      <h3>Returning guests, family &amp; friends</h3>
-      <p>
+      <h3 data-i18n="direct_h3">Returning guests, family &amp; friends</h3>
+      <p data-i18n="direct_p1">
         If you have stayed with us before, or are a family member or friend, you are welcome
         to reach out directly to arrange your stay — no platform needed:
       </p>
       <p>
         <a href="mailto:alpenglueck.tauplitz@gmail.com">alpenglueck.tauplitz@gmail.com</a>
       </p>
-      <p style="font-size:.88rem;color:var(--muted);margin-bottom:0;">
+      <p style="font-size:.88rem;color:var(--muted);margin-bottom:0;" data-i18n="direct_note">
         Direct bookings are reserved for known guests. First-time visitors are kindly
         asked to book via Booking.com or Airbnb.
       </p>
@@ -666,8 +683,8 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2>Get in touch</h2>
-  <p>
+  <h2 data-i18n="contact_h2">Get in touch</h2>
+  <p data-i18n="contact_p">
     Have a question about the apartment, the area, or availability?
     Fill in the form below and your message will open in your email app, ready to send.
   </p>
@@ -676,34 +693,34 @@
     <form id="contact-form">
       <div class="form-row two-col">
         <div>
-          <label for="cf-name">Your name</label>
-          <input type="text" id="cf-name" name="name" placeholder="Jan De Wit" required />
+          <label for="cf-name" data-i18n="lbl_name">Your name</label>
+          <input type="text" id="cf-name" name="name" placeholder="Jan De Wit" data-i18n-ph="ph_name" required />
         </div>
         <div>
-          <label for="cf-email">Your email</label>
-          <input type="email" id="cf-email" name="email" placeholder="jan@example.com" required />
+          <label for="cf-email" data-i18n="lbl_email">Your email</label>
+          <input type="email" id="cf-email" name="email" placeholder="jan@example.com" data-i18n-ph="ph_email" required />
         </div>
       </div>
       <div class="form-row">
-        <label for="cf-subject">Subject</label>
+        <label for="cf-subject" data-i18n="lbl_subject">Subject</label>
         <select id="cf-subject" name="subject">
-          <option value="Availability question">Availability question</option>
-          <option value="General question about the apartment">General question about the apartment</option>
-          <option value="Question about the area">Question about the area</option>
-          <option value="Directions help">Directions help</option>
-          <option value="Other">Other</option>
+          <option value="Availability question" data-i18n="opt1">Availability question</option>
+          <option value="General question about the apartment" data-i18n="opt2">General question about the apartment</option>
+          <option value="Question about the area" data-i18n="opt3">Question about the area</option>
+          <option value="Directions help" data-i18n="opt4">Directions help</option>
+          <option value="Other" data-i18n="opt5">Other</option>
         </select>
       </div>
       <div class="form-row">
-        <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" placeholder="Hello, I'd like to know..." required></textarea>
+        <label for="cf-message" data-i18n="lbl_message">Message</label>
+        <textarea id="cf-message" name="message" placeholder="Hello, I'd like to know..." data-i18n-ph="ph_msg" required></textarea>
       </div>
-      <p class="form-note">
+      <p class="form-note" data-i18n-html="form_note_html">
         Clicking "Send message" will open your email app with this message pre-filled,
         addressed to <a href="mailto:alpenglueck.tauplitz@gmail.com">alpenglueck.tauplitz@gmail.com</a>.
         No data is sent to any server or third party.
       </p>
-      <button type="submit" class="btn-submit">Send message ✉️</button>
+      <button type="submit" class="btn-submit" data-i18n="btn_submit">Send message ✉️</button>
     </form>
   </div>
 </section>
@@ -713,7 +730,7 @@
 <footer>
   <p>
     &copy; <span id="yr"></span> Alpenglück Tauplitz &nbsp;|&nbsp;
-    <a href="privacy.html">Privacy Policy</a>
+    <a href="privacy.html"><span data-i18n="footer_privacy">Privacy Policy</span></a>
   </p>
   <p style="margin-top:.4rem;font-size:.8rem;">
     This site uses no cookies, no tracking, and loads no external content.
@@ -731,6 +748,346 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var translations = {
+    en: {
+      page_title: "Alpenglück Tauplitz – Alpine Apartment in the Styrian Alps",
+      nav_apt: "Apartment", nav_photos: "Photos", nav_discover: "Discover", nav_seasons: "Seasons",
+      nav_location: "Location", nav_book: "Book", nav_contact: "Contact",
+      hero_sub: "Your cosy alpine retreat in the heart of the Styrian Salzkammergut, Austria",
+      about_h2: "About the apartment",
+      about_p1: "Nestled in the charming village of Tauplitz and watched over by the mighty Grimming, our apartment is a warm, comfortable base for both winter ski holidays and summer mountain adventures.",
+      about_p2: "Wake up to fresh Alpine air, spend your days on the slopes, the lakes or the hiking trails, and come home to a fully equipped, cosy space to recharge. The apartment includes a well-fitted kitchen, bright living and dining area, comfortable bedrooms, and a modern bathroom — everything you need for a relaxing mountain stay.",
+      about_p3: "Whether you are chasing powder, mountain panoramas, crystal-clear lakes or simply some peace and quiet, Alpenglück Tauplitz has you covered in every season.",
+      photos_h2: "Impressions",
+      photos_p: "Click any photo to enlarge. Use ← → to browse, Esc to close.",
+      gallery_apt: "The apartment", gallery_region: "The region",
+      gallery_hint: "All photos were taken in and around Tauplitz.",
+      discover_h2: "Discover Tauplitz & the Ausseerland",
+      discover_lead: "Tauplitz sits in the Ausseerland–Salzkammergut, one of the most beautiful corners of Austria — a landscape of turquoise lakes, limestone peaks and storybook villages, much of it UNESCO World Heritage. Here is what awaits you.",
+      c1_h3: "🏔️ Tauplitzalm & the Six Lakes", c1_badge: "On your doorstep",
+      c1_p_html: "One of the largest high plateaus in the Alps (1,650–1,965 m). The famous <strong>Six-Lakes Walk (6-Seen-Wanderung)</strong> winds past the Steirersee, Großsee, Schwarzensee, Tauplitzsee, Krukensee and the tiny Märchensee (\"Fairytale Lake\"). Reach the plateau by chairlift or the scenic toll road.",
+      c1_tip: "Tip: about 3–4 hours, suitable for fit families. Combine with lunch at a Alm hut.",
+      c2_h3: "🛶 Grundlsee & the Three-Lakes Tour", c2_badge: "~25 min",
+      c2_p_html: "The largest lake in Styria, the \"Styrian Sea\". Take the classic <strong>Three-Lakes Tour</strong> by traditional wooden boat: Grundlsee → the mysterious <strong>Toplitzsee</strong> (sunken wartime treasure legends) → the remote Kammersee, source of the river Traun.",
+      c2_tip: "Tip: combine the boat tour with a lakeside lunch in Gössl.",
+      c3_h3: "🏘️ Hallstatt – UNESCO Heritage", c3_badge: "~45 min",
+      c3_p_html: "Perhaps the most photographed village in the world, clinging to a steep mountainside above its lake. Visit the <strong>world's oldest salt mine</strong>, ride up to the <strong>Skywalk \"Welterbeblick\"</strong> for the iconic view, and see the curious Bone House beside the church.",
+      c3_tip: "Tip: arrive early morning or late afternoon to beat the day-trip crowds.",
+      c4_h3: "🚠 Dachstein & Krippenstein", c4_badge: "~40 min",
+      c4_p_html: "Cable car from Obertraun up to <strong>Krippenstein</strong> and the thrilling <strong>5 Fingers</strong> viewing platform over a sheer drop. Explore the <strong>Dachstein Ice Cave</strong> and Mammoth Cave, or head for the glacier with its suspension bridge and \"Stairway to Nothingness\".",
+      c4_tip: "Tip: bring a warm layer — the ice caves stay cold all summer.",
+      c5_h3: "🌼 Bad Aussee & Altaussee", c5_badge: "~20 min",
+      c5_p_html: "<strong>Bad Aussee</strong>, at the geographic heart of Austria, is famous for its spring <strong>Narzissenfest</strong> (Daffodil Festival). Nearby <strong>Altaussee</strong> has a stunning lake, the dramatic <strong>Loser Panoramastraße</strong>, and a salt mine that hid looted artworks during WWII.",
+      c5_tip: "Tip: drive the Loser Panoramastraße for jaw-dropping lake views.",
+      c6_h3: "🎿 The Kulm – Ski Flying Arena", c6_badge: "~10 min",
+      c6_p_html: "One of the largest ski-flying hills on the planet, near Bad Mitterndorf. Periodically hosts the <strong>Ski Flying World Championships</strong> — athletes fly over 200 m through the air. Even out of season, the scale is breathtaking to see.",
+      c6_tip: "Tip: a flying competition is an unforgettable spectacle to watch live.",
+      c7_h3: "♨️ Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 min",
+      c7_p_html: "Your nearest town for shops, cafés and restaurants — and home to the <strong>GrimmingTherme</strong> thermal spa. Perfect for soothing tired muscles after a mountain day, all under the gaze of the <strong>Grimming</strong>, the \"lonely giant\" peak of the region.",
+      c7_tip: "Tip: the ideal rainy-day option — indoor pools, saunas and relaxation areas.",
+      c8_h3: "🗺️ More to explore", c8_badge: "Nearby",
+      c8_p_html: "<strong>Pürgg</strong>, the \"Cradle of Styria\" with 12th-century frescoes • the turquoise <strong>Salza reservoir</strong> • the quiet swimming lake <strong>Ödensee</strong> • neighbouring ski areas <strong>Riesneralm</strong> and <strong>Planneralm</strong>.",
+      c8_tip: "Tip: ask us for our personal favourites — happy to share local secrets.",
+      seasons_h2: "Every season has its magic",
+      winter_h3: "❄️ Winter", summer_h3: "☀️ Summer",
+      w1: "Skiing & snowboarding on the Tauplitz (≈ 40 km of pistes)",
+      w2: "Cross-country skiing & winter walking trails",
+      w3: "Ski touring & snowshoeing across the plateau",
+      w4: "Tobogganing — great fun for the whole family",
+      w5: "Ski-flying spectacles at the Kulm",
+      w6: "Thermal spa days at the GrimmingTherme",
+      s1: "The Six-Lakes Walk on the Tauplitzalm",
+      s2: "Swimming & boat tours on Grundlsee and Altaussee",
+      s3: "Day trips to Hallstatt & the Dachstein",
+      s4: "Mountain biking & road cycling",
+      s5: "Via ferrata & alpine climbing",
+      s6: "Salt mines, mountain huts and village festivals",
+      loc_h2: "Location",
+      loc_lead: "Tauplitz is a small alpine village in the heart of the Styrian Salzkammergut, Austria — easy to reach by car from Belgium, the Netherlands and Germany, mostly via motorway.",
+      map_line3: "Steiermark, Austria",
+      fact1: "✈️ Salzburg Airport — ~90 min", fact2: "✈️ Graz Airport — ~90 min",
+      fact3: "🚗 Munich — ~2.5 h via A8/A10", fact4: "🚗 Brussels — ~9–10 h via E40/A8/A10",
+      fact5: "🚂 Train to Stainach-Irdning, then taxi ~20 min",
+      map_btn: "Open map & get directions ↗",
+      map_note_html: "Need help planning your route? <a href=\"#contact\">Send us a message</a> — we're happy to help.",
+      book_h2: "Book your stay",
+      book_p: "Reserve your dates securely through one of the trusted platforms below. Both offer guest protection, clear cancellation policies, and verified reviews.",
+      btn_booking: "View on Booking.com", btn_airbnb: "View on Airbnb",
+      direct_h3: "Returning guests, family & friends",
+      direct_p1: "If you have stayed with us before, or are a family member or friend, you are welcome to reach out directly to arrange your stay — no platform needed:",
+      direct_note: "Direct bookings are reserved for known guests. First-time visitors are kindly asked to book via Booking.com or Airbnb.",
+      contact_h2: "Get in touch",
+      contact_p: "Have a question about the apartment, the area, or availability? Fill in the form below and your message will open in your email app, ready to send.",
+      lbl_name: "Your name", lbl_email: "Your email", lbl_subject: "Subject", lbl_message: "Message",
+      ph_name: "Jan De Wit", ph_email: "jan@example.com", ph_msg: "Hello, I'd like to know...",
+      opt1: "Availability question", opt2: "General question about the apartment",
+      opt3: "Question about the area", opt4: "Directions help", opt5: "Other",
+      form_note_html: "Clicking \"Send message\" will open your email app with this message pre-filled, addressed to <a href=\"mailto:alpenglueck.tauplitz@gmail.com\">alpenglueck.tauplitz@gmail.com</a>. No data is sent to any server or third party.",
+      btn_submit: "Send message ✉️",
+      footer_privacy: "Privacy Policy"
+    },
+    de: {
+      page_title: "Alpenglück Tauplitz – Ferienwohnung in den steirischen Alpen",
+      nav_apt: "Wohnung", nav_photos: "Fotos", nav_discover: "Entdecken", nav_seasons: "Jahreszeiten",
+      nav_location: "Lage", nav_book: "Buchen", nav_contact: "Kontakt",
+      hero_sub: "Ihr gemütliches Alpendomizil im Herzen des Steirischen Salzkammerguts, Österreich",
+      about_h2: "Über die Wohnung",
+      about_p1: "Eingebettet im charmanten Dorf Tauplitz und bewacht vom mächtigen Grimming, ist unsere Wohnung eine warme und komfortable Basis für Winterskiurlaube und Sommerbergabenteuer.",
+      about_p2: "Erwachen Sie in frischer Alpenluft, verbringen Sie Ihre Tage auf den Pisten, an den Seen oder auf Wanderwegen und kehren Sie in eine vollausgestattete, gemütliche Unterkunft zurück. Die Wohnung umfasst eine gut ausgestattete Küche, einen hellen Wohn- und Essbereich, komfortable Schlafzimmer und ein modernes Bad – alles, was Sie für einen entspannten Bergaufenthalt brauchen.",
+      about_p3: "Ob Sie auf der Suche nach Pulverschnee, Bergpanoramen, kristallklaren Seen oder einfach nach etwas Ruhe sind – Alpenglück Tauplitz hat in jeder Jahreszeit das Richtige für Sie.",
+      photos_h2: "Eindrücke",
+      photos_p: "Klicken Sie auf ein Foto zum Vergrößern. Pfeiltasten zum Blättern, Esc zum Schließen.",
+      gallery_apt: "Die Wohnung", gallery_region: "Die Region",
+      gallery_hint: "Alle Fotos wurden in und um Tauplitz aufgenommen.",
+      discover_h2: "Tauplitz & das Ausseerland entdecken",
+      discover_lead: "Tauplitz liegt im Ausseerland–Salzkammergut, einer der schönsten Ecken Österreichs – eine Landschaft aus türkisfarbenen Seen, Kalksteingipfeln und märchenhaften Dörfern, vieles davon UNESCO-Welterbe. Hier erwartet Sie.",
+      c1_h3: "🏔️ Tauplitzalm & die Sechs Seen", c1_badge: "Direkt vor der Tür",
+      c1_p_html: "Eines der größten Hochplateaus der Alpen (1.650–1.965 m). Die berühmte <strong>Sechs-Seen-Wanderung</strong> führt am Steirersee, Großsee, Schwarzensee, Tauplitzsee, Krukensee und dem kleinen Märchensee vorbei. Das Plateau ist per Sessellift oder der malerischen Mautstraße erreichbar.",
+      c1_tip: "Tipp: ca. 3–4 Stunden, geeignet für fitte Familien. Mit Mittagessen in einer Almhütte kombinieren.",
+      c2_h3: "🛶 Grundlsee & die Drei-Seen-Tour", c2_badge: "~25 Min.",
+      c2_p_html: "Der größte See der Steiermark, das „Steirische Meer\". Unternehmen Sie die klassische <strong>Drei-Seen-Tour</strong> im traditionellen Holzboot: Grundlsee → der geheimnisvolle <strong>Toplitzsee</strong> (Legenden über versunkene Kriegsschätze) → der abgelegene Kammersee, Quell der Traun.",
+      c2_tip: "Tipp: Bootsfahrt mit einem Mittagessen am See in Gössl kombinieren.",
+      c3_h3: "🏘️ Hallstatt – UNESCO-Welterbe", c3_badge: "~45 Min.",
+      c3_p_html: "Vielleicht das meistfotografierte Dorf der Welt, an einen steilen Berghang über seinem See geschmiegt. Besuchen Sie das <strong>älteste Salzbergwerk der Welt</strong>, fahren Sie zum <strong>Skywalk „Welterbeblick\"</strong> für den ikonischen Ausblick und bestaunen Sie das Beinhaus neben der Kirche.",
+      c3_tip: "Tipp: Früh morgens oder am späten Nachmittag kommen, um den Tagesgästen zuvorzukommen.",
+      c4_h3: "🚠 Dachstein & Krippenstein", c4_badge: "~40 Min.",
+      c4_p_html: "Seilbahn von Obertraun hinauf zum <strong>Krippenstein</strong> und der atemberaubenden <strong>5-Fingers</strong>-Aussichtsplattform. Erkunden Sie die <strong>Dachstein-Eishöhle</strong> und Mammuthöhle oder zieht es Sie zum Gletscher mit Hängebrücke und „Treppe ins Nichts\".",
+      c4_tip: "Tipp: Eine warme Schicht einpacken – die Eishöhlen sind auch im Sommer kalt.",
+      c5_h3: "🌼 Bad Aussee & Altaussee", c5_badge: "~20 Min.",
+      c5_p_html: "<strong>Bad Aussee</strong>, im geografischen Mittelpunkt Österreichs, ist bekannt für das Frühlings-<strong>Narzissenfest</strong>. Das nahegelegene <strong>Altaussee</strong> bietet einen atemberaubenden See, die <strong>Loser Panoramastraße</strong> und ein Salzbergwerk, in dem geraubte Kunstwerke aus dem Zweiten Weltkrieg versteckt wurden.",
+      c5_tip: "Tipp: Die Loser Panoramastraße für atemberaubende Seeblicke befahren.",
+      c6_h3: "🎿 Der Kulm – Skiflugschanze", c6_badge: "~10 Min.",
+      c6_p_html: "Eine der größten Skiflugschanzen der Welt, nahe Bad Mitterndorf. Regelmäßig Austragungsort der <strong>Skiflug-Weltmeisterschaft</strong> – Athleten fliegen über 200 m durch die Luft. Selbst außerhalb der Wettkampfzeit ist der Anblick beeindruckend.",
+      c6_tip: "Tipp: Ein Skiflugwettbewerb live zu erleben ist unvergesslich.",
+      c7_h3: "♨️ Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 Min.",
+      c7_p_html: "Ihr nächstgelegener Ort für Einkäufe, Cafés und Restaurants – und Heimat der <strong>GrimmingTherme</strong>. Ideal zum Entspannen müder Muskeln nach einem Bergtag, alles unter dem Blick des <strong>Grimming</strong>, des „einsamen Riesen\" der Region.",
+      c7_tip: "Tipp: Die ideale Option bei schlechtem Wetter – Hallenbäder, Saunen und Entspannungsbereiche.",
+      c8_h3: "🗺️ Noch mehr entdecken", c8_badge: "In der Nähe",
+      c8_p_html: "<strong>Pürgg</strong>, die „Wiege der Steiermark\" mit Fresken aus dem 12. Jahrhundert • der türkisfarbene <strong>Salzasee</strong> • der ruhige Badesee <strong>Ödensee</strong> • benachbarte Skigebiete <strong>Riesneralm</strong> und <strong>Planneralm</strong>.",
+      c8_tip: "Tipp: Fragen Sie uns nach unseren persönlichen Favoriten – wir teilen unsere lokalen Geheimtipps gerne.",
+      seasons_h2: "Jede Jahreszeit hat ihren Zauber",
+      winter_h3: "❄️ Winter", summer_h3: "☀️ Sommer",
+      w1: "Ski & Snowboard auf der Tauplitz (≈ 40 km Pisten)",
+      w2: "Langlaufen & Winterwanderwege",
+      w3: "Skitourengehen & Schneeschuhwandern über das Plateau",
+      w4: "Rodeln – Spaß für die ganze Familie",
+      w5: "Skiflug-Spektakel am Kulm",
+      w6: "Thermaltage in der GrimmingTherme",
+      s1: "Die Sechs-Seen-Wanderung auf der Tauplitzalm",
+      s2: "Schwimmen & Bootsfahrten auf Grundlsee und Altaussee",
+      s3: "Tagesausflüge nach Hallstatt & zum Dachstein",
+      s4: "Mountainbiken & Radfahren",
+      s5: "Klettersteig & Alpinklettern",
+      s6: "Salzbergwerke, Almhütten und Dorffeste",
+      loc_h2: "Lage",
+      loc_lead: "Tauplitz ist ein kleines Alpendorf im Herzen des Steirischen Salzkammerguts, Österreich – gut erreichbar mit dem Auto aus Belgien, den Niederlanden und Deutschland, größtenteils über Autobahn.",
+      map_line3: "Steiermark, Österreich",
+      fact1: "✈️ Flughafen Salzburg — ~90 Min.", fact2: "✈️ Flughafen Graz — ~90 Min.",
+      fact3: "🚗 München — ~2,5 Std. via A8/A10", fact4: "🚗 Brüssel — ~9–10 Std. via E40/A8/A10",
+      fact5: "🚂 Zug nach Stainach-Irdning, dann Taxi ~20 Min.",
+      map_btn: "Karte öffnen & Route planen ↗",
+      map_note_html: "Brauchen Sie Hilfe bei der Anreiseplanung? <a href=\"#contact\">Schreiben Sie uns</a> – wir helfen gerne.",
+      book_h2: "Ihren Aufenthalt buchen",
+      book_p: "Reservieren Sie Ihre Termine sicher über eine der bewährten Plattformen. Beide bieten Gästeschutz, klare Stornierungsbedingungen und verifizierte Bewertungen.",
+      btn_booking: "Auf Booking.com ansehen", btn_airbnb: "Auf Airbnb ansehen",
+      direct_h3: "Stammgäste, Familie & Freunde",
+      direct_p1: "Wenn Sie bereits bei uns übernachtet haben oder Familie bzw. Freunde sind, können Sie sich gerne direkt an uns wenden – ohne Plattform:",
+      direct_note: "Direktbuchungen sind nur für bekannte Gäste. Erstbesucher werden gebeten, über Booking.com oder Airbnb zu buchen.",
+      contact_h2: "Kontakt",
+      contact_p: "Haben Sie Fragen zur Wohnung, zur Region oder zur Verfügbarkeit? Füllen Sie das Formular aus – Ihre Nachricht öffnet sich in Ihrer E-Mail-App, bereit zum Absenden.",
+      lbl_name: "Ihr Name", lbl_email: "Ihre E-Mail", lbl_subject: "Betreff", lbl_message: "Nachricht",
+      ph_name: "Max Mustermann", ph_email: "max@beispiel.de", ph_msg: "Hallo, ich möchte gerne...",
+      opt1: "Verfügbarkeitsanfrage", opt2: "Allgemeine Frage zur Wohnung",
+      opt3: "Frage zur Region", opt4: "Hilfe bei der Anreise", opt5: "Sonstiges",
+      form_note_html: "Mit „Nachricht senden\" öffnet sich Ihre E-Mail-App mit dieser Nachricht, adressiert an <a href=\"mailto:alpenglueck.tauplitz@gmail.com\">alpenglueck.tauplitz@gmail.com</a>. Es werden keine Daten an Server oder Dritte gesendet.",
+      btn_submit: "Nachricht senden ✉️",
+      footer_privacy: "Datenschutz"
+    },
+    nl: {
+      page_title: "Alpenglück Tauplitz – Alpenvakantieappartement",
+      nav_apt: "Appartement", nav_photos: "Foto's", nav_discover: "Ontdekken", nav_seasons: "Seizoenen",
+      nav_location: "Locatie", nav_book: "Boeken", nav_contact: "Contact",
+      hero_sub: "Uw gezellige alpenverblijf in het hart van het Steirische Salzkammergut, Oostenrijk",
+      about_h2: "Over het appartement",
+      about_p1: "Genesteld in het charmante dorp Tauplitz en bewaakt door de machtige Grimming, is ons appartement een warm en comfortabel uitvalsbasis voor winterse skivakantie én zomerse bergavonturen.",
+      about_p2: "Word wakker met frisse alpenlucht, breng uw dagen door op de pistes, aan de meren of op wandelpaden, en keer terug naar een volledig uitgerust, gezellig appartement. Het appartement beschikt over een goed uitgeruste keuken, een lichte woon- en eethoek, comfortabele slaapkamers en een moderne badkamer – alles wat u nodig heeft voor een ontspannen verblijf in de bergen.",
+      about_p3: "Of u nu poedersneeuw, bergpanoramas, kristalheldere meren of gewoon rust en stilte zoekt – Alpenglück Tauplitz heeft in elk seizoen het juiste voor u.",
+      photos_h2: "Indrukken",
+      photos_p: "Klik op een foto om te vergroten. Gebruik ← → om te bladeren, Esc om te sluiten.",
+      gallery_apt: "Het appartement", gallery_region: "De regio",
+      gallery_hint: "Alle foto's zijn gemaakt in en rond Tauplitz.",
+      discover_h2: "Ontdek Tauplitz & het Ausseerland",
+      discover_lead: "Tauplitz ligt in het Ausseerland–Salzkammergut, een van de mooiste hoekjes van Oostenrijk – een landschap van turquoise meren, kalkstenen toppen en sprookjesachtige dorpen, grotendeels UNESCO Werelderfgoed. Dit staat u te wachten.",
+      c1_h3: "🏔️ Tauplitzalm & de Zes Meren", c1_badge: "Vlak voor de deur",
+      c1_p_html: "Een van de grootste hoogvlaktes van de Alpen (1.650–1.965 m). De beroemde <strong>Zesmeerenwandeling (6-Seen-Wanderung)</strong> loopt langs de Steirersee, Großsee, Schwarzensee, Tauplitzsee, Krukensee en het kleine Märchensee (\"Sprookjesmeer\"). Bereik het plateau met de stoeltjeslift of de schilderachtige tolweg.",
+      c1_tip: "Tip: ongeveer 3–4 uur, geschikt voor fitte families. Combineer met een lunch in een berghut.",
+      c2_h3: "🛶 Grundlsee & de Driemerenwandeling", c2_badge: "~25 min.",
+      c2_p_html: "Het grootste meer van Stiermarken, de \"Stiermarkse Zee\". Maak de klassieke <strong>Driemerenwandeling</strong> met een traditionele houten boot: Grundlsee → het mysterieuze <strong>Toplitzsee</strong> → het afgelegen Kammersee, bron van de rivier de Traun.",
+      c2_tip: "Tip: combineer de boottocht met een lunch aan het meer in Gössl.",
+      c3_h3: "🏘️ Hallstatt – UNESCO Erfgoed", c3_badge: "~45 min.",
+      c3_p_html: "Misschien wel het meest gefotografeerde dorp ter wereld, geklemd aan een steile berghelling boven zijn meer. Bezoek de <strong>oudste zoutmijn ter wereld</strong>, rijd omhoog naar de <strong>Skywalk \"Welterbeblick\"</strong> voor het iconische uitzicht en bekijk het bijzondere Beenderhuis.",
+      c3_tip: "Tip: kom vroeg in de ochtend of laat in de middag om de dagtoeristen voor te zijn.",
+      c4_h3: "🚠 Dachstein & Krippenstein", c4_badge: "~40 min.",
+      c4_p_html: "Kabelbaan vanuit Obertraun omhoog naar <strong>Krippenstein</strong> en het adembenemende <strong>5 Vingers</strong> uitkijkplatform boven een steile afgrond. Verken de <strong>Dachstein IJsgrot</strong> en Mammoetgrot, of ga naar de gletsjer met zijn hangbrug.",
+      c4_tip: "Tip: neem een warme laag mee – de ijsgrotten blijven het hele jaar koud.",
+      c5_h3: "🌼 Bad Aussee & Altaussee", c5_badge: "~20 min.",
+      c5_p_html: "<strong>Bad Aussee</strong>, in het geografische hart van Oostenrijk, staat bekend om het lente-<strong>Narzissenfest</strong> (Narcissenfestival). Het nabijgelegen <strong>Altaussee</strong> heeft een prachtig meer, de dramatische <strong>Loser Panoramastraße</strong> en een zoutmijn waar WOII-kunstwerken werden verborgen.",
+      c5_tip: "Tip: rijd de Loser Panoramastraße voor adembenemende uitzichten op het meer.",
+      c6_h3: "🎿 De Kulm – Schansspringen", c6_badge: "~10 min.",
+      c6_p_html: "Een van de grootste schansspringheuvels ter wereld, nabij Bad Mitterndorf. Regelmatig gastheer van het <strong>Wereldkampioenschap Schansspringen</strong> – atleten vliegen meer dan 200 m door de lucht.",
+      c6_tip: "Tip: een vliegwedstrijd live bijwonen is een onvergetelijk spektakel.",
+      c7_h3: "♨️ Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 min.",
+      c7_p_html: "Het dichtstbijzijnde stadje voor winkels, cafés en restaurants – en thuisbasis van de <strong>GrimmingTherme</strong>. Ideaal om vermoeide spieren te verzorgen na een dag in de bergen, onder het toeziend oog van de <strong>Grimming</strong>.",
+      c7_tip: "Tip: de ideale optie op een regenachtige dag – binnenzwembaden, sauna's en ontspanningsruimtes.",
+      c8_h3: "🗺️ Meer te ontdekken", c8_badge: "In de buurt",
+      c8_p_html: "<strong>Pürgg</strong>, de \"wieg van Stiermarken\" met 12e-eeuwse fresco's • het turquoise <strong>Salzareservoir</strong> • het rustige zwemmeer <strong>Ödensee</strong> • naburige skigebieden <strong>Riesneralm</strong> en <strong>Planneralm</strong>.",
+      c8_tip: "Tip: vraag ons naar onze persoonlijke favorieten – we delen graag onze lokale geheimen.",
+      seasons_h2: "Elk seizoen heeft zijn magie",
+      winter_h3: "❄️ Winter", summer_h3: "☀️ Zomer",
+      w1: "Ski & snowboard op de Tauplitz (≈ 40 km pistes)",
+      w2: "Langlaufen & winterwandelingen",
+      w3: "Skitochten & sneeuwschoenwandelen over het plateau",
+      w4: "Sleeën – geweldig voor het hele gezin",
+      w5: "Schansspringspektakels op de Kulm",
+      w6: "Thermale spabadrondagen in de GrimmingTherme",
+      s1: "De Zesmeerenwandeling op de Tauplitzalm",
+      s2: "Zwemmen & boottochten op Grundlsee en Altaussee",
+      s3: "Dagtochten naar Hallstatt & de Dachstein",
+      s4: "Mountainbiken & wielrennen",
+      s5: "Via ferrata & alpinisme",
+      s6: "Zoutmijnen, berghuten en dorpsfeesten",
+      loc_h2: "Locatie",
+      loc_lead: "Tauplitz is een klein alpendorpje in het hart van het Steirische Salzkammergut in Oostenrijk – goed bereikbaar met de auto vanuit België, Nederland en Duitsland, grotendeels via snelweg.",
+      map_line3: "Stiermarken, Oostenrijk",
+      fact1: "✈️ Luchthaven Salzburg — ~90 min.", fact2: "✈️ Luchthaven Graz — ~90 min.",
+      fact3: "🚗 München — ~2,5 u via A8/A10", fact4: "🚗 Brussel — ~9–10 u via E40/A8/A10",
+      fact5: "🚂 Trein naar Stainach-Irdning, dan taxi ~20 min.",
+      map_btn: "Kaart openen & route plannen ↗",
+      map_note_html: "Hulp nodig bij het plannen van uw route? <a href=\"#contact\">Stuur ons een bericht</a> – we helpen graag.",
+      book_h2: "Uw verblijf boeken",
+      book_p: "Reserveer uw data veilig via een van de vertrouwde platforms. Beide bieden gastenbescherming, duidelijke annuleringsvoorwaarden en geverifieerde beoordelingen.",
+      btn_booking: "Bekijken op Booking.com", btn_airbnb: "Bekijken op Airbnb",
+      direct_h3: "Terugkerende gasten, familie & vrienden",
+      direct_p1: "Als u al eerder bij ons heeft verbleven, of familie of vriend bent, kunt u rechtstreeks contact met ons opnemen – geen platform nodig:",
+      direct_note: "Directe reserveringen zijn voorbehouden aan bekende gasten. Eerste bezoekers wordt vriendelijk verzocht via Booking.com of Airbnb te boeken.",
+      contact_h2: "Neem contact op",
+      contact_p: "Heeft u een vraag over het appartement, de regio of beschikbaarheid? Vul het formulier in en uw bericht opent zich in uw e-mailapp, klaar om te verzenden.",
+      lbl_name: "Uw naam", lbl_email: "Uw e-mail", lbl_subject: "Onderwerp", lbl_message: "Bericht",
+      ph_name: "Jan de Wit", ph_email: "jan@voorbeeld.nl", ph_msg: "Hallo, ik zou graag willen weten...",
+      opt1: "Vraag over beschikbaarheid", opt2: "Algemene vraag over het appartement",
+      opt3: "Vraag over de regio", opt4: "Hulp bij de route", opt5: "Overige",
+      form_note_html: "Door op \"Bericht verzenden\" te klikken, opent uw e-mailapp met dit bericht, gericht aan <a href=\"mailto:alpenglueck.tauplitz@gmail.com\">alpenglueck.tauplitz@gmail.com</a>. Er worden geen gegevens naar servers of derden verzonden.",
+      btn_submit: "Bericht verzenden ✉️",
+      footer_privacy: "Privacybeleid"
+    },
+    cs: {
+      page_title: "Alpenglück Tauplitz – Alpský apartmán",
+      nav_apt: "Apartmán", nav_photos: "Fotografie", nav_discover: "Objevit", nav_seasons: "Roční období",
+      nav_location: "Poloha", nav_book: "Rezervace", nav_contact: "Kontakt",
+      hero_sub: "Váš útulný alpský útulek v srdci Štýrského Salzkammergutu, Rakousko",
+      about_h2: "O apartmánu",
+      about_p1: "Zasazený do malebné vesnice Tauplitz a dohlížený mocným Grimmingem, náš apartmán je teplou a pohodlnou základnou jak pro zimní lyžařské dovolené, tak pro letní horská dobrodružství.",
+      about_p2: "Probouzejte se do čerstvého alpského vzduchu, trávte dny na sjezdovkách, u jezer nebo na turistických stezkách a vraťte se do plně vybaveného, útulného apartmánu. Apartmán zahrnuje dobře vybavenou kuchyň, světlý obývací a jídelní prostor, pohodlné ložnice a moderní koupelnu – vše pro relaxační pobyt v horách.",
+      about_p3: "Ať hledáte prašan, horská panoramata, křišťálově čistá jezera nebo jen klid – Alpenglück Tauplitz má v každém ročním období to pravé pro vás.",
+      photos_h2: "Dojmy",
+      photos_p: "Klikněte na fotografii pro zvětšení. Procházejte klávesami ← →, zavřete klávesou Esc.",
+      gallery_apt: "Apartmán", gallery_region: "Oblast",
+      gallery_hint: "Všechny fotografie byly pořízeny v Tauplitzu a jeho okolí.",
+      discover_h2: "Objevte Tauplitz & Ausseerland",
+      discover_lead: "Tauplitz leží v oblasti Ausseerland–Salzkammergut, jednom z nejkrásnějších koutů Rakouska – krajině tyrkysových jezer, vápencových vrcholů a pohádkových vesnic, z nichž mnohé jsou UNESCO dědictví. Zde je to, co vás čeká.",
+      c1_h3: "🏔️ Tauplitzalm & Šest jezer", c1_badge: "Přímo přede dveřmi",
+      c1_p_html: "Jedna z největších horských plošin v Alpách (1 650–1 965 m). Slavná <strong>Túra po šesti jezerech (6-Seen-Wanderung)</strong> vede kolem Steirersee, Großsee, Schwarzensee, Tauplitzsee, Krukensee a malého Märchensee. Na plošinu se dostanete lanovkou nebo poplatkovou silnicí.",
+      c1_tip: "Tip: cca 3–4 hodiny, vhodné pro zdatné rodiny. Kombinujte s obědem v horské chatě.",
+      c2_h3: "🛶 Grundlsee & Výlet po třech jezerech", c2_badge: "~25 min.",
+      c2_p_html: "Největší jezero ve Štýrsku, „Štýrské moře\". Vyrazte na klasický <strong>Výlet po třech jezerech</strong> tradičním dřevěným člunem: Grundlsee → tajemné <strong>Toplitzsee</strong> → odlehlé Kammersee, pramen řeky Traun.",
+      c2_tip: "Tip: kombinujte plavbu s obědem u jezera v Gössl.",
+      c3_h3: "🏘️ Hallstatt – UNESCO dědictví", c3_badge: "~45 min.",
+      c3_p_html: "Snad nejfotografovanější vesnice na světě, přitisklá ke strmému svahu nad jezerem. Navštivte <strong>nejstarší solný důl na světě</strong>, vyjeďte na <strong>Skywalk „Welterbeblick\"</strong> pro ikonický výhled a prohlédněte si kostnici u kostela.",
+      c3_tip: "Tip: přijeďte brzy ráno nebo pozdě odpoledne, abyste předešli davům jednodenních výletníků.",
+      c4_h3: "🚠 Dachstein & Krippenstein", c4_badge: "~40 min.",
+      c4_p_html: "Lanovka z Obertraunu na <strong>Krippenstein</strong> a úchvatnou vyhlídkovou platformu <strong>5 Fingers</strong>. Prozkoumejte <strong>Dachsteinskou ledovou jeskyni</strong> a Mamutí jeskyni nebo se vydejte na ledovec se závěsným mostem.",
+      c4_tip: "Tip: vezměte si teplou vrstvu – ledové jeskyně jsou celoročně studené.",
+      c5_h3: "🌼 Bad Aussee & Altaussee", c5_badge: "~20 min.",
+      c5_p_html: "<strong>Bad Aussee</strong>, v geografickém středu Rakouska, je proslulé jarním <strong>Narzissenfest</strong> (Festival narcisů). Nedalekéh <strong>Altaussee</strong> nabízí nádherné jezero, dramatickou <strong>Loser Panoramastraße</strong> a solný důl s ukrytými válečnými uměleckými díly.",
+      c5_tip: "Tip: projet Loser Panoramastraße pro ohromující výhledy na jezero.",
+      c6_h3: "🎿 Kulm – Skoky na lyžích", c6_badge: "~10 min.",
+      c6_p_html: "Jeden z největších skokanských mostků na světě, u Bad Mitterndorfu. Pravidelně pořádá <strong>Mistrovství světa ve skocích na lyžích</strong> – závodníci létají přes 200 m vzduchem.",
+      c6_tip: "Tip: zažít závod ve skocích naživo je nezapomenutelná podívaná.",
+      c7_h3: "♨️ Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 min.",
+      c7_p_html: "Nejbližší město pro nákupy, kavárny a restaurace – a domov termálního lázně <strong>GrimmingTherme</strong>. Ideální pro regeneraci unavených svalů po dni v horách, pod pohledem <strong>Grimmingu</strong>, „osamělého obra\" oblasti.",
+      c7_tip: "Tip: ideální volba za deštivého dne – kryté bazény, sauny a relaxační prostory.",
+      c8_h3: "🗺️ Více k objevení", c8_badge: "V okolí",
+      c8_p_html: "<strong>Pürgg</strong>, „kolébka Štýrska\" s freskami z 12. století • tyrkysová <strong>nádrž Salza</strong> • klidné koupací jezero <strong>Ödensee</strong> • sousední lyžařská střediska <strong>Riesneralm</strong> a <strong>Planneralm</strong>.",
+      c8_tip: "Tip: zeptejte se nás na naše osobní tipy – rádi se podělíme o místní tajemství.",
+      seasons_h2: "Každé roční období má své kouzlo",
+      winter_h3: "❄️ Zima", summer_h3: "☀️ Léto",
+      w1: "Lyžování & snowboard na Tauplitz (≈ 40 km sjezdovek)",
+      w2: "Běžecké lyžování & zimní turistické stezky",
+      w3: "Skialpinismus & sněžnicová turistika po plošině",
+      w4: "Sáňkování – skvělá zábava pro celou rodinu",
+      w5: "Závody ve skocích na lyžích na Kulmu",
+      w6: "Dny v termálních lázních GrimmingTherme",
+      s1: "Túra po šesti jezerech na Tauplitzalm",
+      s2: "Plavání & plavby na Grundlsee a Altaussee",
+      s3: "Jednodenní výlety do Hallstatt & na Dachstein",
+      s4: "Horská kola & silniční cyklistika",
+      s5: "Via ferrata & alpské lezení",
+      s6: "Solné doly, horské chaty a vesnické slavnosti",
+      loc_h2: "Poloha",
+      loc_lead: "Tauplitz je malá alpská vesnice v srdci Štýrského Salzkammergutu v Rakousku – snadno dosažitelná autem z Belgie, Nizozemska a Německa, převážně po dálnici.",
+      map_line3: "Štýrsko, Rakousko",
+      fact1: "✈️ Letiště Salzburg — ~90 min.", fact2: "✈️ Letiště Graz — ~90 min.",
+      fact3: "🚗 Mnichov — ~2,5 h po A8/A10", fact4: "🚗 Brusel — ~9–10 h po E40/A8/A10",
+      fact5: "🚂 Vlak do Stainach-Irdning, pak taxi ~20 min.",
+      map_btn: "Otevřít mapu & naplánovat trasu ↗",
+      map_note_html: "Potřebujete pomoc s plánováním trasy? <a href=\"#contact\">Napište nám</a> – rádi pomůžeme.",
+      book_h2: "Rezervujte svůj pobyt",
+      book_p: "Rezervujte termíny bezpečně prostřednictvím jedné z ověřených platforem. Obě nabízejí ochranu hostů, jasné storno podmínky a ověřené recenze.",
+      btn_booking: "Zobrazit na Booking.com", btn_airbnb: "Zobrazit na Airbnb",
+      direct_h3: "Vracející se hosté, rodina & přátelé",
+      direct_p1: "Pokud jste u nás již dříve pobývali nebo jste rodinní příslušníci či přátelé, obraťte se na nás přímo – bez platformy:",
+      direct_note: "Přímé rezervace jsou vyhrazeny pro známé hosty. Prvonávštěvníci jsou zdvořile požádáni o rezervaci přes Booking.com nebo Airbnb.",
+      contact_h2: "Kontaktujte nás",
+      contact_p: "Máte otázku ohledně apartmánu, oblasti nebo dostupnosti? Vyplňte formulář a vaše zpráva se otevře ve vaší e-mailové aplikaci připravená k odeslání.",
+      lbl_name: "Vaše jméno", lbl_email: "Váš e-mail", lbl_subject: "Předmět", lbl_message: "Zpráva",
+      ph_name: "Jan Novák", ph_email: "jan@priklad.cz", ph_msg: "Dobrý den, rád(a) bych se zeptal(a)...",
+      opt1: "Dotaz na dostupnost", opt2: "Obecný dotaz o apartmánu",
+      opt3: "Dotaz na oblast", opt4: "Pomoc s trasou", opt5: "Ostatní",
+      form_note_html: "Kliknutím na „Odeslat zprávu\" se otevře vaše e-mailová aplikace s touto zprávou, adresovanou na <a href=\"mailto:alpenglueck.tauplitz@gmail.com\">alpenglueck.tauplitz@gmail.com</a>. Žádná data nejsou odesílána na servery ani třetím stranám.",
+      btn_submit: "Odeslat zprávu ✉️",
+      footer_privacy: "Ochrana soukromí"
+    }
+  };
+
+  function setLang(lang) {
+    if (!translations[lang]) lang = 'en';
+    var t = translations[lang];
+    document.documentElement.lang = lang;
+    if (t.page_title) document.title = t.page_title;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-ph');
+      if (t[key] !== undefined) el.placeholder = t[key];
+    });
+    document.querySelectorAll('.lang-switch button').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    localStorage.setItem('lang', lang);
+  }
+
+  (function(){
+    var stored = localStorage.getItem('lang') || (navigator.language||'en').slice(0,2);
+    if (['en','de','nl','cs'].indexOf(stored) === -1) stored = 'en';
+    setLang(stored);
+  })();
 
   (function () {
     var figs = Array.prototype.slice.call(document.querySelectorAll('.gallery figure'));
