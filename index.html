@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alpenglück Tauplitz – Alpine Apartment</title>
+  <meta name="description" content="Cosy alpine apartment in Tauplitz, Austria. Book via Booking.com or Airbnb." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:  #3a6b4a;
+      --green-light: #4e8c60;
+      --cream:  #f7f3ee;
+      --brown:  #6b4f3a;
+      --text:   #2c2c2c;
+      --muted:  #666;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 500px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.65) 0%, rgba(0,0,0,.1) 60%);
+    }
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      padding: 2.5rem 2rem;
+      color: #fff;
+      max-width: 700px;
+    }
+    .hero-text h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -.5px;
+      line-height: 1.15;
+    }
+    .hero-text p {
+      margin-top: .6rem;
+      font-size: 1.1rem;
+      opacity: .9;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 4rem 1.5rem; max-width: 900px; margin: 0 auto; }
+
+    h2 {
+      font-size: 1.7rem;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+    p { margin-bottom: 1rem; color: var(--text); }
+
+    /* ── PHOTO GRID ── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+      padding: 2rem 1.5rem 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    /* ── BOOK BUTTONS ── */
+    .book-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .85rem 1.6rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity .15s, transform .1s;
+    }
+    .btn:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-booking { background: #003580; color: #fff; }
+    .btn-airbnb  { background: #ff385c; color: #fff; }
+
+    .btn svg { width: 22px; height: 22px; flex-shrink: 0; fill: currentColor; }
+
+    /* ── DIRECT BOOKING BOX ── */
+    .direct-box {
+      background: #fff;
+      border: 2px solid var(--green);
+      border-radius: var(--radius);
+      padding: 1.8rem 2rem;
+      margin-top: 1.5rem;
+    }
+    .direct-box h3 { color: var(--green); margin-bottom: .6rem; font-size: 1.2rem; }
+    .direct-box a {
+      color: var(--green-light);
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    /* ── DIVIDER ── */
+    hr { border: none; border-top: 1px solid #ddd; margin: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green);
+      color: rgba(255,255,255,.8);
+      text-align: center;
+      padding: 1.8rem 1rem;
+      font-size: .9rem;
+    }
+    footer a { color: #c8e6c9; text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="images/hero.jpg" alt="Snow-covered alpine landscape at sunset near Tauplitz" />
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h1>Alpenglück Tauplitz</h1>
+    <p>Your cosy alpine retreat in the heart of the Styrian Alps, Austria</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section>
+  <h2>About the apartment</h2>
+  <p>
+    Nestled in the charming village of Tauplitz, our apartment offers a warm and comfortable
+    base for both winter ski holidays and summer mountain adventures. Wake up to stunning
+    Alpine scenery, explore the famous Tauplitzalm plateau, and return to a welcoming home
+    after a day in the mountains.
+  </p>
+  <p>
+    Whether you're here for the slopes, the hiking trails, the alpine lakes, or simply
+    the fresh mountain air — Alpenglück Tauplitz has you covered in every season.
+  </p>
+</section>
+<hr />
+
+<!-- PHOTO GALLERY -->
+<div class="gallery">
+  <img src="images/lake.jpg"    alt="Alpine lake on the Tauplitzalm plateau" />
+  <img src="images/meadow.jpg"  alt="Wildflower meadow with mountain views" />
+  <img src="images/hiking.jpg"  alt="Hikers on a summer trail near Tauplitz" />
+  <img src="images/bedroom.jpg" alt="Cosy bedroom in the apartment" />
+</div>
+
+<!-- BOOK SECTION -->
+<section>
+  <h2>Book your stay</h2>
+  <p>
+    Reserve your dates securely through one of the trusted platforms below.
+    Both offer guest protection, clear cancellation policies, and verified reviews.
+  </p>
+
+  <div class="book-grid">
+    <!-- Booking.com -->
+    <a class="btn btn-booking"
+       href="https://www.booking.com/Share-NSsUTZE"
+       target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M17.33 3H6.67A3.67 3.67 0 0 0 3 6.67v10.66A3.67 3.67 0 0 0 6.67 21h10.66A3.67 3.67 0 0 0 21 17.33V6.67A3.67 3.67 0 0 0 17.33 3zm-5.16 12.5H9.5V8.5h2.67c1.93 0 3.16 1 3.16 2.67a2.37 2.37 0 0 1-1.27 2.17l1.44 2.16h-1.93l-1.2-1.83h-.2v1.83zm0-3.17h-.5v-1.66h.5c.67 0 1 .33 1 .83s-.33.83-1 .83z"/>
+      </svg>
+      View on Booking.com
+    </a>
+
+    <!-- Airbnb -->
+    <a class="btn btn-airbnb"
+       href="https://www.airbnb.be/rooms/51036211?guests=1&adults=1&s=67&unique_share_id=4e15bfca-5d18-45ab-be7b-5f35f5af99cb"
+       target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm5 13H7v-1c0-2.67 3.34-4 5-4s5 1.33 5 4v1z"/>
+      </svg>
+      View on Airbnb
+    </a>
+  </div>
+
+  <!-- DIRECT BOOKING -->
+  <div class="direct-box">
+    <h3>Returning guests, family &amp; friends</h3>
+    <p>
+      If you have stayed with us before, or are a family member or friend,
+      you are welcome to reach out directly to arrange your stay without
+      going through a platform:
+    </p>
+    <p>
+      <a href="mailto:alpenglueck.tauplitz@gmail.com">alpenglueck.tauplitz@gmail.com</a>
+    </p>
+    <p style="font-size:.9rem; color:var(--muted); margin-bottom:0;">
+      Please note: direct bookings are reserved for known guests. First-time visitors
+      are kindly asked to book via Booking.com or Airbnb.
+    </p>
+  </div>
+</section>
+
+<hr />
+
+<!-- LOCATION -->
+<section>
+  <h2>Location</h2>
+  <p>
+    Tauplitz is a small alpine village in Styria, Austria, situated at around 900 m altitude.
+    It is the gateway to the Tauplitzalm (1,650 m), a beautiful high plateau with ski slopes
+    in winter and walking trails, mountain lakes, and wildlife in summer.
+  </p>
+  <p>
+    Nearest ski resort: <strong>Tauplitz–Bad Mitterndorf</strong><br />
+    Nearest town: <strong>Bad Mitterndorf</strong> (~5 km)<br />
+    Nearest city: <strong>Liezen</strong> (~25 km) &nbsp;|&nbsp; <strong>Graz</strong> (~120 km)
+  </p>
+</section>
+
+<hr />
+
+<footer>
+  <p>
+    &copy; <span id="yr"></span> Alpenglück Tauplitz &nbsp;|&nbsp;
+    <a href="privacy.html">Privacy Policy</a>
+  </p>
+  <p style="margin-top:.4rem; font-size:.8rem;">
+    This site does not use cookies or tracking. Booking links lead to external platforms.
+  </p>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</footer>
+
+</body>
+</html>
