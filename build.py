@@ -7,6 +7,8 @@ fully-localized static HTML for en/de/nl/cs with per-page SEO metadata
 
 Re-runnable: reads from template.html, never from its own output.
 """
+import base64
+import hashlib
 import json
 import os
 import re
@@ -108,16 +110,29 @@ def build_lang(template_html, translations, lang):
     for el in soup.find_all(src=True):
         if el["src"].startswith("images/"):
             el["src"] = "/" + el["src"]
+    # Responsive image attributes (srcset is a comma-separated "url width" list).
+    for el in soup.find_all(srcset=True):
+        parts = []
+        for item in el["srcset"].split(","):
+            item = item.strip()
+            if item.startswith("images/"):
+                item = "/" + item
+            parts.append(item)
+        el["srcset"] = ", ".join(parts)
+    for el in soup.find_all(attrs={"data-full": True}):
+        if el["data-full"].startswith("images/"):
+            el["data-full"] = "/" + el["data-full"]
     for el in soup.find_all(href=True):
         if el["href"] in ("privacy.html", "impressum.html"):
             el["href"] = "/" + el["href"]
         elif el["href"].startswith("images/"):
             el["href"] = "/" + el["href"]
 
-    # Language switcher: make buttons navigate, mark active.
+    # Language switcher: set navigation target (no inline onclick, for CSP),
+    # mark active. A small inline script wires the click handlers at runtime.
     for btn in soup.select(".lang-switch button"):
         blang = btn.get("data-lang")
-        btn["onclick"] = "location.href='/%s'" % PATHS[blang]
+        btn["data-href"] = "/" + PATHS[blang]
         if blang == lang:
             existing = btn.get("class", [])
             if "active" not in existing:
@@ -136,7 +151,7 @@ def build_lang(template_html, translations, lang):
 
 def inject_head(soup, lang, url, title, desc):
     head = soup.head
-    img = BASE + "images/hero.jpg"
+    img = BASE + "images/opt/hero-1600.jpg"
 
     def meta(attrs):
         m = soup.new_tag("meta")
@@ -149,6 +164,37 @@ def inject_head(soup, lang, url, title, desc):
         for k, v in attrs.items():
             l[k] = v
         head.append(l)
+
+    # Content-Security-Policy + referrer policy (hardening).
+    # The site loads only same-origin resources, so we can lock down strictly.
+    # Inline scripts are allowlisted by SHA-256 hash (no 'unsafe-inline' for
+    # scripts); inline styles still need 'unsafe-inline' (style attributes).
+    script_hashes = []
+    for s in soup.find_all("script"):
+        if s.get("src") or s.get("type") == "application/ld+json":
+            continue
+        content = s.string or ""
+        if not content.strip():
+            continue
+        digest = base64.b64encode(hashlib.sha256(content.encode("utf-8")).digest()).decode()
+        script_hashes.append("'sha256-%s'" % digest)
+    csp = "; ".join([
+        "default-src 'self'",
+        "base-uri 'self'",
+        "object-src 'none'",
+        "img-src 'self' data:",
+        "font-src 'self'",
+        "style-src 'self' 'unsafe-inline'",
+        "script-src 'self' " + " ".join(script_hashes),
+        "form-action 'none'",
+        "frame-ancestors 'none'",
+        "upgrade-insecure-requests",
+    ])
+    csp_meta = soup.new_tag("meta")
+    csp_meta["http-equiv"] = "Content-Security-Policy"
+    csp_meta["content"] = csp
+    head.insert(0, csp_meta)
+    meta({"name": "referrer", "content": "strict-origin-when-cross-origin"})
 
     # Canonical
     link({"rel": "canonical", "href": url})

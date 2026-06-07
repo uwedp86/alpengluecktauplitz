@@ -395,18 +395,21 @@
       <a href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
     <div class="lang-switch">
-      <button onclick="location.href='/'" data-lang="en">EN</button>
-      <button onclick="location.href='/de/'" data-lang="de">DE</button>
-      <button onclick="location.href='/nl/'" data-lang="nl">NL</button>
-      <button onclick="location.href='/cs/'" data-lang="cs">CS</button>
-      <button onclick="location.href='/hu/'" data-lang="hu">HU</button>
+      <button data-href="/" data-lang="en">EN</button>
+      <button data-href="/de/" data-lang="de">DE</button>
+      <button data-href="/nl/" data-lang="nl">NL</button>
+      <button data-href="/cs/" data-lang="cs">CS</button>
+      <button data-href="/hu/" data-lang="hu">HU</button>
     </div>
   </div>
 </header>
 
 <!-- HERO -->
 <div class="hero">
-  <img src="images/hero.jpg" alt="Snow-covered alpine landscape at sunset near Tauplitz" />
+  <picture>
+    <source type="image/webp" srcset="images/opt/hero-1200.webp 1200w, images/opt/hero-2000.webp 2000w" sizes="100vw" />
+    <img src="images/opt/hero-1600.jpg" width="1600" height="1200" fetchpriority="high" decoding="async" alt="Snow-covered alpine landscape at sunset near Tauplitz" />
+  </picture>
   <div class="hero-overlay"></div>
   <div class="hero-text">
     <h1>Alpenglück Tauplitz</h1>
@@ -445,39 +448,66 @@
   <p class="gallery-label" data-i18n="gallery_apt">The apartment</p>
   <div class="gallery" id="gallery-apt">
     <figure>
-      <img src="images/exterior01.jpg" alt="Exterior of the apartment building" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/exterior01-800.webp 800w, images/opt/exterior01-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/exterior01-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Exterior of the apartment building" data-full="images/opt/exterior01-1600.webp" />
+      </picture>
       <figcaption>The apartment building</figcaption>
     </figure>
     <figure>
-      <img src="images/livingroom.jpg" alt="Bright and comfortable living room" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/livingroom-800.webp 800w, images/opt/livingroom-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/livingroom-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Bright and comfortable living room" data-full="images/opt/livingroom-1600.webp" />
+      </picture>
       <figcaption>Living room</figcaption>
     </figure>
     <figure>
-      <img src="images/diningroom.jpg" alt="Dining area" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/diningroom-800.webp 800w, images/opt/diningroom-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/diningroom-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Dining area" data-full="images/opt/diningroom-1600.webp" />
+      </picture>
       <figcaption>Dining area</figcaption>
     </figure>
     <figure>
-      <img src="images/kitchen.jpg" alt="Fully equipped kitchen" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/kitchen-800.webp 800w, images/opt/kitchen-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/kitchen-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Fully equipped kitchen" data-full="images/opt/kitchen-1600.webp" />
+      </picture>
       <figcaption>Fully equipped kitchen</figcaption>
     </figure>
     <figure>
-      <img src="images/bedroom.jpg" alt="Cosy main bedroom" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/bedroom-800.webp 800w, images/opt/bedroom-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/bedroom-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Cosy main bedroom" data-full="images/opt/bedroom-1600.webp" />
+      </picture>
       <figcaption>Main bedroom</figcaption>
     </figure>
     <figure>
-      <img src="images/bedroom02.jpg" alt="Second bedroom" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/bedroom02-800.webp 800w, images/opt/bedroom02-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/bedroom02-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Second bedroom" data-full="images/opt/bedroom02-1600.webp" />
+      </picture>
       <figcaption>Second bedroom</figcaption>
     </figure>
     <figure>
-      <img src="images/bedroom03.jpg" alt="Third bedroom" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/bedroom03-800.webp 800w, images/opt/bedroom03-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/bedroom03-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Third bedroom" data-full="images/opt/bedroom03-1600.webp" />
+      </picture>
       <figcaption>Third bedroom</figcaption>
     </figure>
     <figure>
-      <img src="images/hallway.jpg" alt="Entrance hallway" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/hallway-800.webp 800w, images/opt/hallway-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/hallway-1200.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Entrance hallway" data-full="images/opt/hallway-1600.webp" />
+      </picture>
       <figcaption>Entrance hallway</figcaption>
     </figure>
     <figure>
-      <img src="images/shower.jpg" alt="Modern bathroom with shower" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/shower-800.webp 800w, images/opt/shower-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/shower-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Modern bathroom with shower" data-full="images/opt/shower-1600.webp" />
+      </picture>
       <figcaption>Modern bathroom</figcaption>
     </figure>
   </div>
@@ -485,23 +515,38 @@
   <p class="gallery-label" style="margin-top:2rem;" data-i18n="gallery_region">The region</p>
   <div class="gallery" id="gallery-region">
     <figure>
-      <img src="images/lake.jpg" alt="Mountain lake on the Tauplitzalm plateau" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/lake-800.webp 800w, images/opt/lake-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/lake-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Mountain lake on the Tauplitzalm plateau" data-full="images/opt/lake-1600.webp" />
+      </picture>
       <figcaption>Mountain lake on the Tauplitzalm</figcaption>
     </figure>
     <figure>
-      <img src="images/meadow.jpg" alt="Alpine wildflower meadow with mountain peaks" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/meadow-800.webp 800w, images/opt/meadow-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/meadow-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Alpine wildflower meadow with mountain peaks" data-full="images/opt/meadow-1600.webp" />
+      </picture>
       <figcaption>Alpine wildflower meadows</figcaption>
     </figure>
     <figure>
-      <img src="images/flora01.jpg" alt="Alpine flora in summer bloom" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/flora01-800.webp 800w, images/opt/flora01-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/flora01-1200.jpg" width="1200" height="1799" loading="lazy" decoding="async" alt="Alpine flora in summer bloom" data-full="images/opt/flora01-1600.webp" />
+      </picture>
       <figcaption>Summer flora on the plateau</figcaption>
     </figure>
     <figure>
-      <img src="images/flora02.jpg" alt="Close-up of alpine flowers and mountain landscape" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/flora02-800.webp 800w, images/opt/flora02-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/flora02-1200.jpg" width="1200" height="1598" loading="lazy" decoding="async" alt="Close-up of alpine flowers and mountain landscape" data-full="images/opt/flora02-1600.webp" />
+      </picture>
       <figcaption>Alpine flowers and peaks</figcaption>
     </figure>
     <figure>
-      <img src="images/hiking.jpg" alt="Two hikers on a summer trail near Tauplitz" />
+      <picture>
+        <source type="image/webp" srcset="images/opt/hiking-800.webp 800w, images/opt/hiking-1600.webp 1600w" sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" />
+        <img src="images/opt/hiking-1200.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Two hikers on a summer trail near Tauplitz" data-full="images/opt/hiking-1600.webp" />
+      </picture>
       <figcaption>Endless hiking trails on your doorstep</figcaption>
     </figure>
   </div>
@@ -1381,7 +1426,7 @@
 
     function show(i) {
       idx = (i + imgs.length) % imgs.length;
-      lbImg.src = imgs[idx].src;
+      lbImg.src = imgs[idx].getAttribute('data-full') || imgs[idx].src;
       lbImg.alt = imgs[idx].alt;
       lbCap.textContent = imgs[idx].alt;
     }
@@ -1416,6 +1461,11 @@
       else if(e.key === 'ArrowRight') show(idx + 1);
     });
   })();
+
+  // Language switcher (CSP-friendly: no inline onclick handlers).
+  document.querySelectorAll('.lang-switch button[data-href]').forEach(function(btn){
+    btn.addEventListener('click', function(){ location.href = btn.getAttribute('data-href'); });
+  });
 
   // Contact form → mailto
   document.getElementById('contact-form').addEventListener('submit', function(e) {
