@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alpenglueck-tauplitz.be/sitemap.xml
