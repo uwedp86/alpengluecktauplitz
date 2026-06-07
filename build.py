@@ -19,21 +19,23 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(ROOT, "template.html")
 BASE = "https://alpenglueck-tauplitz.be/"
 
-LANGS = ["en", "de", "nl", "cs"]
-PATHS = {"en": "", "de": "de/", "nl": "nl/", "cs": "cs/"}
-OG_LOCALE = {"en": "en_US", "de": "de_DE", "nl": "nl_NL", "cs": "cs_CZ"}
+LANGS = ["en", "de", "nl", "cs", "hu"]
+PATHS = {"en": "", "de": "de/", "nl": "nl/", "cs": "cs/", "hu": "hu/"}
+OG_LOCALE = {"en": "en_US", "de": "de_DE", "nl": "nl_NL", "cs": "cs_CZ", "hu": "hu_HU"}
 
 TITLES = {
     "en": "Alpenglück Tauplitz – Alpine Apartment in the Styrian Alps",
     "de": "Alpenglück Tauplitz – Ferienwohnung in den Steirischen Alpen",
     "nl": "Alpenglück Tauplitz – Alpenappartement in de Stiermarkse Alpen",
     "cs": "Alpenglück Tauplitz – Alpský apartmán ve Štýrských Alpách",
+    "hu": "Alpenglück Tauplitz – Alpesi apartman a Stájer-Alpokban",
 }
 DESCS = {
     "en": "Cosy alpine apartment in Tauplitz, Austria. Your base for the Tauplitzalm, Grundlsee, Hallstatt and the Dachstein. Book via Booking.com or Airbnb.",
     "de": "Gemütliche Ferienwohnung in Tauplitz, Österreich. Ihr Ausgangspunkt für Tauplitzalm, Grundlsee, Hallstatt und den Dachstein. Buchen über Booking.com oder Airbnb.",
     "nl": "Gezellig alpenappartement in Tauplitz, Oostenrijk. Uw uitvalsbasis voor de Tauplitzalm, Grundlsee, Hallstatt en de Dachstein. Boek via Booking.com of Airbnb.",
     "cs": "Útulný alpský apartmán v Tauplitz, Rakousko. Vaše základna pro Tauplitzalm, Grundlsee, Hallstatt a Dachstein. Rezervujte přes Booking.com nebo Airbnb.",
+    "hu": "Hangulatos alpesi apartman Tauplitzban, Ausztriában. Bázisa a Tauplitzalm, Grundlsee, Hallstatt és a Dachstein felfedezéséhez. Foglaljon a Booking.com-on vagy az Airbnb-n keresztül.",
 }
 
 
@@ -156,6 +158,7 @@ def inject_head(soup, lang, url, title, desc):
     link({"rel": "alternate", "hreflang": "de", "href": BASE + "de/"})
     link({"rel": "alternate", "hreflang": "nl", "href": BASE + "nl/"})
     link({"rel": "alternate", "hreflang": "cs", "href": BASE + "cs/"})
+    link({"rel": "alternate", "hreflang": "hu", "href": BASE + "hu/"})
     link({"rel": "alternate", "hreflang": "x-default", "href": BASE})
 
     # Open Graph
@@ -212,7 +215,7 @@ def inject_head(soup, lang, url, title, desc):
         ],
         "petsAllowed": False,
         "numberOfRooms": 3,
-        "knowsLanguage": ["en", "de", "nl", "cs"],
+        "knowsLanguage": ["en", "de", "nl", "cs", "hu"],
         "sameAs": [
             "https://www.booking.com/Share-NSsUTZE",
             "https://www.airbnb.be/rooms/51036211",

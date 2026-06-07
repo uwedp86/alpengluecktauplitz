@@ -8,6 +8,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://alpenglueck-tauplitz.be/de/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://alpenglueck-tauplitz.be/nl/"/>
     <xhtml:link rel="alternate" hreflang="cs" href="https://alpenglueck-tauplitz.be/cs/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://alpenglueck-tauplitz.be/hu/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://alpenglueck-tauplitz.be/"/>
   </url>
   <url>
@@ -17,6 +18,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://alpenglueck-tauplitz.be/de/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://alpenglueck-tauplitz.be/nl/"/>
     <xhtml:link rel="alternate" hreflang="cs" href="https://alpenglueck-tauplitz.be/cs/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://alpenglueck-tauplitz.be/hu/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://alpenglueck-tauplitz.be/"/>
   </url>
   <url>
@@ -26,6 +28,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://alpenglueck-tauplitz.be/de/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://alpenglueck-tauplitz.be/nl/"/>
     <xhtml:link rel="alternate" hreflang="cs" href="https://alpenglueck-tauplitz.be/cs/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://alpenglueck-tauplitz.be/hu/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://alpenglueck-tauplitz.be/"/>
   </url>
   <url>
@@ -35,6 +38,17 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://alpenglueck-tauplitz.be/de/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://alpenglueck-tauplitz.be/nl/"/>
     <xhtml:link rel="alternate" hreflang="cs" href="https://alpenglueck-tauplitz.be/cs/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://alpenglueck-tauplitz.be/hu/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://alpenglueck-tauplitz.be/"/>
+  </url>
+  <url>
+    <loc>https://alpenglueck-tauplitz.be/hu/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alpenglueck-tauplitz.be/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://alpenglueck-tauplitz.be/de/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://alpenglueck-tauplitz.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://alpenglueck-tauplitz.be/cs/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://alpenglueck-tauplitz.be/hu/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://alpenglueck-tauplitz.be/"/>
   </url>
 </urlset>
