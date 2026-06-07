@@ -42,9 +42,12 @@ def extract_translations(html):
 
     Uses Node.js to evaluate the object literal (it is valid JS, not JSON).
     """
-    m = re.search(r"var\s+translations\s*=\s*(\{.*?\n\s*\});", html, re.DOTALL)
+    data_soup = BeautifulSoup(html, "html.parser")
+    data_script = data_soup.find("script", id="i18n-data")
+    src = data_script.string if data_script else html
+    m = re.search(r"var\s+translations\s*=\s*(\{.*\});", src, re.DOTALL)
     if not m:
-        raise RuntimeError("Could not locate translations object in template")
+        raise RuntimeError("Could not locate translations object in #i18n-data")
     obj = m.group(1)
     node_src = "process.stdout.write(JSON.stringify(" + obj + "));"
     out = subprocess.check_output(["node", "-e", node_src])
@@ -117,6 +120,13 @@ def build_lang(template_html, translations, lang):
             existing = btn.get("class", [])
             if "active" not in existing:
                 btn["class"] = existing + ["active"]
+
+    # Static pages need no runtime translation: drop the i18n data + runtime
+    # scripts entirely so the pre-rendered language is never overwritten.
+    for sid in ("i18n-data", "i18n-runtime"):
+        s = soup.find("script", id=sid)
+        if s:
+            s.decompose()
 
     inject_head(soup, lang, url, title, desc)
     return soup

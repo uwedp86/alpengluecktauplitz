@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="page_title">Alpenglück Tauplitz – Alpine Apartment in the Styrian Alps</title>
   <meta name="description" content="Cosy alpine apartment in Tauplitz, Austria. Your base for the Tauplitzalm, Grundlsee, Hallstatt and the Dachstein. Book via Booking.com or Airbnb." />
+  <link rel="stylesheet" href="/assets/fonts.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,15 +17,20 @@
       --brown:       #6b4f3a;
       --text:        #2c2c2c;
       --muted:       #666;
+      --accent:      #2f8f9d;
+      --accent-dark: #256f7a;
       --radius:      12px;
     }
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       color: var(--text);
       background: var(--cream);
       line-height: 1.6;
+    }
+    h1, h2, h3, .nav-logo, .gallery-label {
+      font-family: 'Fraunces', 'Georgia', serif;
     }
 
     /* NAV */
@@ -71,7 +77,7 @@
     .band-white { background:#fff; }
     section { padding:3.5rem 1.5rem; max-width:960px; margin:0 auto; }
     section[id] { scroll-margin-top:68px; }
-    h2 { font-size:1.7rem; color:var(--green); margin-bottom:1rem; }
+    h2 { font-size:1.9rem; font-weight:700; color:var(--green); margin-bottom:1rem; letter-spacing:-.3px; }
     h3 { color:var(--green); }
     .lead { font-size:1.06rem; }
     p { margin-bottom:.9rem; }
@@ -295,6 +301,81 @@
       .gallery { grid-template-columns:1fr 1fr; }
       .gallery img { height:150px; }
     }
+
+    /* INLINE SVG ICONS */
+    .ico {
+      width:1.5rem; height:1.5rem;
+      stroke:var(--green); fill:none;
+      stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round;
+      vertical-align:-.30em; flex-shrink:0;
+    }
+    .ico-light { stroke:#fff; }
+    .card h3, .season h3 { display:flex; align-items:center; gap:.5rem; }
+
+    /* HERO CTA */
+    .hero-cta {
+      display:inline-block; margin-top:1.4rem;
+      padding:.9rem 1.8rem;
+      background:var(--accent); color:#fff;
+      font-weight:600; text-decoration:none;
+      border-radius:8px;
+      box-shadow:0 4px 14px rgba(0,0,0,.25);
+      transition:transform .15s, box-shadow .15s, opacity .15s, background .15s;
+    }
+    .hero-cta:hover {
+      transform:translateY(-2px); opacity:.96;
+      background:var(--accent-dark);
+      box-shadow:0 8px 22px rgba(0,0,0,.32);
+    }
+    @media (max-width:520px) {
+      .hero-cta { display:block; text-align:center; }
+    }
+
+    /* QUOTE BAND */
+    .quote-band {
+      position:relative; min-height:340px;
+      display:flex; align-items:center; justify-content:center;
+      background:url('/images/lake.jpg') center/cover;
+      background-attachment:fixed;
+    }
+    .quote-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(rgba(37,111,122,.55),rgba(0,0,0,.45));
+    }
+    .quote-text {
+      position:relative; z-index:1; color:#fff;
+      font-family:'Fraunces',serif;
+      font-size:clamp(1.6rem,4vw,2.6rem);
+      font-style:italic; text-align:center;
+      max-width:18ch; padding:1rem;
+      text-shadow:0 2px 16px rgba(0,0,0,.4);
+    }
+    @media (max-width:768px) { .quote-band { background-attachment:scroll; } }
+
+    /* TESTIMONIALS */
+    #reviews { }
+    .testi-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.3rem; margin-top:1.8rem;
+    }
+    .testi {
+      background:#fff; border-radius:var(--radius);
+      padding:1.6rem;
+      box-shadow:0 2px 12px rgba(0,0,0,.06);
+      border-top:4px solid var(--accent);
+      border-left:1px solid rgba(0,0,0,.03);
+      transition:transform .18s, box-shadow .18s;
+    }
+    .testi .stars { color:#e0a400; font-size:.95rem; margin-bottom:.6rem; letter-spacing:2px; }
+    .testi blockquote { font-style:italic; margin:0 0 .8rem; color:var(--text); }
+    .testi figcaption { font-weight:700; font-size:.9rem; color:var(--green); }
+
+    /* CARD / SEASON / TESTI HOVER POLISH */
+    .card, .season, .testi { transition:transform .18s, box-shadow .18s; }
+    .card:hover, .season:hover, .testi:hover {
+      transform:translateY(-3px);
+      box-shadow:0 8px 24px rgba(0,0,0,.10);
+    }
   </style>
 </head>
 <body>
@@ -308,15 +389,16 @@
       <a href="#photos" data-i18n="nav_photos">Photos</a>
       <a href="#discover" data-i18n="nav_discover">Discover</a>
       <a href="#seasons" data-i18n="nav_seasons">Seasons</a>
+      <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
       <a href="#getting-here" data-i18n="nav_location">Location</a>
       <a href="#book" data-i18n="nav_book">Book</a>
       <a href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
     <div class="lang-switch">
-      <button onclick="setLang('en')" data-lang="en">EN</button>
-      <button onclick="setLang('de')" data-lang="de">DE</button>
-      <button onclick="setLang('nl')" data-lang="nl">NL</button>
-      <button onclick="setLang('cs')" data-lang="cs">CS</button>
+      <button onclick="location.href='/'" data-lang="en">EN</button>
+      <button onclick="location.href='/de/'" data-lang="de">DE</button>
+      <button onclick="location.href='/nl/'" data-lang="nl">NL</button>
+      <button onclick="location.href='/cs/'" data-lang="cs">CS</button>
     </div>
   </div>
 </header>
@@ -328,6 +410,7 @@
   <div class="hero-text">
     <h1>Alpenglück Tauplitz</h1>
     <p data-i18n="hero_sub">Your cosy alpine retreat in the heart of the Styrian Salzkammergut, Austria</p>
+    <a href="#book" class="hero-cta" data-i18n="hero_cta">Check availability →</a>
   </div>
 </div>
 
@@ -437,7 +520,7 @@
     <div class="guide-grid">
 
       <div class="card">
-        <h3 data-i18n="c1_h3">🏔️ Tauplitzalm &amp; the Six Lakes</h3>
+        <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18L14 6l-3 5-2-3-6 12z"/></svg> <span data-i18n="c1_h3">Tauplitzalm &amp; the Six Lakes</span></h3>
         <span class="badge" data-i18n="c1_badge">On your doorstep</span>
         <p data-i18n-html="c1_p_html">
           One of the largest high plateaus in the Alps (1,650–1,965 m). The famous
@@ -449,7 +532,7 @@
       </div>
 
       <div class="card">
-        <h3 data-i18n="c2_h3">🛶 Grundlsee &amp; the Three-Lakes Tour</h3>
+        <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14h18l-2 5H5z"/><path d="M12 14V4l6 6"/></svg> <span data-i18n="c2_h3">Grundlsee &amp; the Three-Lakes Tour</span></h3>
         <span class="badge" data-i18n="c2_badge">~25 min</span>
         <p data-i18n-html="c2_p_html">
           The largest lake in Styria, the "Styrian Sea". Take the classic
@@ -461,7 +544,7 @@
       </div>
 
       <div class="card">
-        <h3 data-i18n="c3_h3">🏘️ Hallstatt – UNESCO Heritage</h3>
+        <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6 8 6"/><path d="M6 10v9h12v-9"/></svg> <span data-i18n="c3_h3">Hallstatt – UNESCO Heritage</span></h3>
         <span class="badge" data-i18n="c3_badge">~45 min</span>
         <p data-i18n-html="c3_p_html">
           Perhaps the most photographed village in the world, clinging to a steep
@@ -473,7 +556,7 @@
       </div>
 
       <div class="card">
-        <h3 data-i18n="c4_h3">🚠 Dachstein &amp; Krippenstein</h3>
+        <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18"/><path d="M12 5v3"/><rect x="7.5" y="8" width="9" height="6" rx="1"/></svg> <span data-i18n="c4_h3">Dachstein &amp; Krippenstein</span></h3>
         <span class="badge" data-i18n="c4_badge">~40 min</span>
         <p data-i18n-html="c4_p_html">
           Cable car from Obertraun up to <strong>Krippenstein</strong> and the thrilling
@@ -485,7 +568,7 @@
       </div>
 
       <div class="card">
-        <h3 data-i18n="c5_h3">🌼 Bad Aussee &amp; Altaussee</h3>
+        <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5V6M12 14.5V18M9.5 12H6M14.5 12H18"/></svg> <span data-i18n="c5_h3">Bad Aussee &amp; Altaussee</span></h3>
         <span class="badge" data-i18n="c5_badge">~20 min</span>
         <p data-i18n-html="c5_p_html">
           <strong>Bad Aussee</strong>, at the geographic heart of Austria, is famous for
@@ -498,7 +581,7 @@
       </div>
 
       <div class="card">
-        <h3 data-i18n="c6_h3">🎿 The Kulm – Ski Flying Arena</h3>
+        <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19L17 5"/><path d="M7 21L19 7"/></svg> <span data-i18n="c6_h3">The Kulm – Ski Flying Arena</span></h3>
         <span class="badge" data-i18n="c6_badge">~10 min</span>
         <p data-i18n-html="c6_p_html">
           One of the largest ski-flying hills on the planet, near Bad Mitterndorf.
@@ -510,7 +593,7 @@
       </div>
 
       <div class="card">
-        <h3 data-i18n="c7_h3">♨️ Bad Mitterndorf &amp; GrimmingTherme</h3>
+        <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14c2 0 2-1.6 4-1.6s2 1.6 4 1.6 2-1.6 4-1.6 2 1.6 4 1.6"/><path d="M4 18c2 0 2-1.6 4-1.6s2 1.6 4 1.6 2-1.6 4-1.6 2 1.6 4 1.6"/><path d="M9 9c0-1 1-1.5 1-2.5M14 9c0-1 1-1.5 1-2.5"/></svg> <span data-i18n="c7_h3">Bad Mitterndorf &amp; GrimmingTherme</span></h3>
         <span class="badge" data-i18n="c7_badge">~5 min</span>
         <p data-i18n-html="c7_p_html">
           Your nearest town for shops, cafés and restaurants — and home to the
@@ -522,7 +605,7 @@
       </div>
 
       <div class="card">
-        <h3 data-i18n="c8_h3">🗺️ More to explore</h3>
+        <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg> <span data-i18n="c8_h3">More to explore</span></h3>
         <span class="badge" data-i18n="c8_badge">Nearby</span>
         <p data-i18n-html="c8_p_html">
           <strong>Pürgg</strong>, the "Cradle of Styria" with 12th-century frescoes •
@@ -537,12 +620,18 @@
   </section>
 </div>
 
+<!-- QUOTE BAND -->
+<div class="quote-band">
+  <div class="quote-overlay"></div>
+  <p class="quote-text" data-i18n="quote_band">Where the mountains meet stillness</p>
+</div>
+
 <!-- SEASONS -->
 <section id="seasons">
   <h2 data-i18n="seasons_h2">Every season has its magic</h2>
   <div class="season-grid">
     <div class="season">
-      <h3 data-i18n="winter_h3">❄️ Winter</h3>
+      <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg> <span data-i18n="winter_h3">Winter</span></h3>
       <ul>
         <li data-i18n="w1">Skiing &amp; snowboarding on the Tauplitz (≈ 40 km of pistes)</li>
         <li data-i18n="w2">Cross-country skiing &amp; winter walking trails</li>
@@ -553,7 +642,7 @@
       </ul>
     </div>
     <div class="season">
-      <h3 data-i18n="summer_h3">☀️ Summer</h3>
+      <h3><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg> <span data-i18n="summer_h3">Summer</span></h3>
       <ul>
         <li data-i18n="s1">The Six-Lakes Walk on the Tauplitzalm</li>
         <li data-i18n="s2">Swimming &amp; boat tours on Grundlsee and Altaussee</li>
@@ -565,6 +654,32 @@
     </div>
   </div>
 </section>
+
+<!-- TESTIMONIALS -->
+<div class="band band-tint">
+  <section id="reviews">
+    <h2 data-i18n="testi_h2">What our guests say</h2>
+    <p class="lead" data-i18n="testi_sub">A few words from recent stays.</p>
+    <!-- TODO (owner): replace these sample testimonials with your real guest reviews -->
+    <div class="testi-grid">
+      <figure class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote data-i18n="t1_q">A perfect alpine hideaway — spotless, cosy, and the view of the Grimming is unforgettable. We're already planning our return.</blockquote>
+        <figcaption data-i18n="t1_n">Sophie &amp; Marc · Belgium</figcaption>
+      </figure>
+      <figure class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote data-i18n="t2_q">Everything you need for a mountain holiday — minutes from the slopes and the thermal spa, and beautifully equipped.</blockquote>
+        <figcaption data-i18n="t2_n">Familie Berger · Germany</figcaption>
+      </figure>
+      <figure class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote data-i18n="t3_q">So peaceful and thoughtfully furnished. The Six-Lakes walk straight from the village was the highlight of our summer.</blockquote>
+        <figcaption data-i18n="t3_n">Jan &amp; Petra · Netherlands</figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
 
 <!-- LOCATION -->
 <div class="band band-tint">
@@ -617,11 +732,11 @@
           </div>
         </div>
         <div class="map-facts">
-          <div class="map-fact" data-i18n="fact1">✈️ Salzburg Airport — ~90 min</div>
-          <div class="map-fact" data-i18n="fact2">✈️ Graz Airport — ~90 min</div>
-          <div class="map-fact" data-i18n="fact3">🚗 Munich — ~2.5 h via A8/A10</div>
-          <div class="map-fact" data-i18n="fact4">🚗 Brussels — ~9–10 h via E40/A8/A10</div>
-          <div class="map-fact" data-i18n="fact5">🚂 Train to Stainach-Irdning, then taxi ~20 min</div>
+          <div class="map-fact"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15.5l-8-4.5V4a1 1 0 00-2 0v7l-8 4.5v1.6l8-2.3V21l-2 1.2v1.3l3-.9 3 .9v-1.3L13 21v-4.5l8 2.3z"/></svg> <span data-i18n="fact1">Salzburg Airport — ~90 min</span></div>
+          <div class="map-fact"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15.5l-8-4.5V4a1 1 0 00-2 0v7l-8 4.5v1.6l8-2.3V21l-2 1.2v1.3l3-.9 3 .9v-1.3L13 21v-4.5l8 2.3z"/></svg> <span data-i18n="fact2">Graz Airport — ~90 min</span></div>
+          <div class="map-fact"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l1.6-4.5A2 2 0 018.5 7h7a2 2 0 011.9 1.5L19 13M4.5 13h15v4h-15z"/><circle cx="8" cy="17.5" r="1.3"/><circle cx="16" cy="17.5" r="1.3"/></svg> <span data-i18n="fact3">Munich — ~2.5 h via A8/A10</span></div>
+          <div class="map-fact"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l1.6-4.5A2 2 0 018.5 7h7a2 2 0 011.9 1.5L19 13M4.5 13h15v4h-15z"/><circle cx="8" cy="17.5" r="1.3"/><circle cx="16" cy="17.5" r="1.3"/></svg> <span data-i18n="fact4">Brussels — ~9–10 h via E40/A8/A10</span></div>
+          <div class="map-fact"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="12" height="12" rx="2.5"/><path d="M6 11h12M9.5 16L7.5 20M14.5 16l2 4"/></svg> <span data-i18n="fact5">Train to Stainach-Irdning, then taxi ~20 min</span></div>
 
         </div>
         <a class="map-btn"
@@ -720,7 +835,7 @@
         addressed to <a href="mailto:alpenglueck.tauplitz@gmail.com">alpenglueck.tauplitz@gmail.com</a>.
         No data is sent to any server or third party.
       </p>
-      <button type="submit" class="btn-submit" data-i18n="btn_submit">Send message ✉️</button>
+      <button type="submit" class="btn-submit"><span data-i18n="btn_submit">Send message</span> <svg class="ico ico-light" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
     </form>
   </div>
 </section>
@@ -748,7 +863,9 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
 
+<script id="i18n-data">
   var translations = {
     en: {
       page_title: "Alpenglück Tauplitz – Alpine Apartment in the Styrian Alps",
@@ -765,32 +882,32 @@
       gallery_hint: "All photos were taken in and around Tauplitz.",
       discover_h2: "Discover Tauplitz & the Ausseerland",
       discover_lead: "Tauplitz sits in the Ausseerland–Salzkammergut, one of the most beautiful corners of Austria — a landscape of turquoise lakes, limestone peaks and storybook villages, much of it UNESCO World Heritage. Here is what awaits you.",
-      c1_h3: "🏔️ Tauplitzalm & the Six Lakes", c1_badge: "On your doorstep",
+      c1_h3: "Tauplitzalm & the Six Lakes", c1_badge: "On your doorstep",
       c1_p_html: "One of the largest high plateaus in the Alps (1,650–1,965 m). The famous <strong>Six-Lakes Walk (6-Seen-Wanderung)</strong> winds past the Steirersee, Großsee, Schwarzensee, Tauplitzsee, Krukensee and the tiny Märchensee (\"Fairytale Lake\"). Reach the plateau by chairlift or the scenic toll road.",
       c1_tip: "Tip: about 3–4 hours, suitable for fit families. Combine with lunch at a Alm hut.",
-      c2_h3: "🛶 Grundlsee & the Three-Lakes Tour", c2_badge: "~25 min",
+      c2_h3: "Grundlsee & the Three-Lakes Tour", c2_badge: "~25 min",
       c2_p_html: "The largest lake in Styria, the \"Styrian Sea\". Take the classic <strong>Three-Lakes Tour</strong> by traditional wooden boat: Grundlsee → the mysterious <strong>Toplitzsee</strong> (sunken wartime treasure legends) → the remote Kammersee, source of the river Traun.",
       c2_tip: "Tip: combine the boat tour with a lakeside lunch in Gössl.",
-      c3_h3: "🏘️ Hallstatt – UNESCO Heritage", c3_badge: "~45 min",
+      c3_h3: "Hallstatt – UNESCO Heritage", c3_badge: "~45 min",
       c3_p_html: "Perhaps the most photographed village in the world, clinging to a steep mountainside above its lake. Visit the <strong>world's oldest salt mine</strong>, ride up to the <strong>Skywalk \"Welterbeblick\"</strong> for the iconic view, and see the curious Bone House beside the church.",
       c3_tip: "Tip: arrive early morning or late afternoon to beat the day-trip crowds.",
-      c4_h3: "🚠 Dachstein & Krippenstein", c4_badge: "~40 min",
+      c4_h3: "Dachstein & Krippenstein", c4_badge: "~40 min",
       c4_p_html: "Cable car from Obertraun up to <strong>Krippenstein</strong> and the thrilling <strong>5 Fingers</strong> viewing platform over a sheer drop. Explore the <strong>Dachstein Ice Cave</strong> and Mammoth Cave, or head for the glacier with its suspension bridge and \"Stairway to Nothingness\".",
       c4_tip: "Tip: bring a warm layer — the ice caves stay cold all summer.",
-      c5_h3: "🌼 Bad Aussee & Altaussee", c5_badge: "~20 min",
+      c5_h3: "Bad Aussee & Altaussee", c5_badge: "~20 min",
       c5_p_html: "<strong>Bad Aussee</strong>, at the geographic heart of Austria, is famous for its spring <strong>Narzissenfest</strong> (Daffodil Festival). Nearby <strong>Altaussee</strong> has a stunning lake, the dramatic <strong>Loser Panoramastraße</strong>, and a salt mine that hid looted artworks during WWII.",
       c5_tip: "Tip: drive the Loser Panoramastraße for jaw-dropping lake views.",
-      c6_h3: "🎿 The Kulm – Ski Flying Arena", c6_badge: "~10 min",
+      c6_h3: "The Kulm – Ski Flying Arena", c6_badge: "~10 min",
       c6_p_html: "One of the largest ski-flying hills on the planet, near Bad Mitterndorf. Periodically hosts the <strong>Ski Flying World Championships</strong> — athletes fly over 200 m through the air. Even out of season, the scale is breathtaking to see.",
       c6_tip: "Tip: a flying competition is an unforgettable spectacle to watch live.",
-      c7_h3: "♨️ Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 min",
+      c7_h3: "Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 min",
       c7_p_html: "Your nearest town for shops, cafés and restaurants — and home to the <strong>GrimmingTherme</strong> thermal spa. Perfect for soothing tired muscles after a mountain day, all under the gaze of the <strong>Grimming</strong>, the \"lonely giant\" peak of the region.",
       c7_tip: "Tip: the ideal rainy-day option — indoor pools, saunas and relaxation areas.",
-      c8_h3: "🗺️ More to explore", c8_badge: "Nearby",
+      c8_h3: "More to explore", c8_badge: "Nearby",
       c8_p_html: "<strong>Pürgg</strong>, the \"Cradle of Styria\" with 12th-century frescoes • the turquoise <strong>Salza reservoir</strong> • the quiet swimming lake <strong>Ödensee</strong> • neighbouring ski areas <strong>Riesneralm</strong> and <strong>Planneralm</strong>.",
       c8_tip: "Tip: ask us for our personal favourites — happy to share local secrets.",
       seasons_h2: "Every season has its magic",
-      winter_h3: "❄️ Winter", summer_h3: "☀️ Summer",
+      winter_h3: "Winter", summer_h3: "Summer",
       w1: "Skiing & snowboarding on the Tauplitz (≈ 40 km of pistes)",
       w2: "Cross-country skiing & winter walking trails",
       w3: "Ski touring & snowshoeing across the plateau",
@@ -806,9 +923,9 @@
       loc_h2: "Location",
       loc_lead: "Tauplitz is a small alpine village in the heart of the Styrian Salzkammergut, Austria — easy to reach by car from Belgium, the Netherlands and Germany, mostly via motorway.",
       map_line3: "Steiermark, Austria",
-      fact1: "✈️ Salzburg Airport — ~90 min", fact2: "✈️ Graz Airport — ~90 min",
-      fact3: "🚗 Munich — ~2.5 h via A8/A10", fact4: "🚗 Brussels — ~9–10 h via E40/A8/A10",
-      fact5: "🚂 Train to Stainach-Irdning, then taxi ~20 min",
+      fact1: "Salzburg Airport — ~90 min", fact2: "Graz Airport — ~90 min",
+      fact3: "Munich — ~2.5 h via A8/A10", fact4: "Brussels — ~9–10 h via E40/A8/A10",
+      fact5: "Train to Stainach-Irdning, then taxi ~20 min",
       map_btn: "Open map & get directions ↗",
       map_note_html: "Need help planning your route? <a href=\"#contact\">Send us a message</a> — we're happy to help.",
       book_h2: "Book your stay",
@@ -824,7 +941,18 @@
       opt1: "Availability question", opt2: "General question about the apartment",
       opt3: "Question about the area", opt4: "Directions help", opt5: "Other",
       form_note_html: "Clicking \"Send message\" will open your email app with this message pre-filled, addressed to <a href=\"mailto:alpenglueck.tauplitz@gmail.com\">alpenglueck.tauplitz@gmail.com</a>. No data is sent to any server or third party.",
-      btn_submit: "Send message ✉️",
+      btn_submit: "Send message",
+      nav_reviews: "Reviews",
+      hero_cta: "Check availability →",
+      quote_band: "Where the mountains meet stillness",
+      testi_h2: "What our guests say",
+      testi_sub: "A few words from recent stays.",
+      t1_q: "A perfect alpine hideaway — spotless, cosy, and the view of the Grimming is unforgettable. We're already planning our return.",
+      t1_n: "Sophie & Marc · Belgium",
+      t2_q: "Everything you need for a mountain holiday — minutes from the slopes and the thermal spa, and beautifully equipped.",
+      t2_n: "Familie Berger · Germany",
+      t3_q: "So peaceful and thoughtfully furnished. The Six-Lakes walk straight from the village was the highlight of our summer.",
+      t3_n: "Jan & Petra · Netherlands",
       footer_privacy: "Privacy Policy"
     },
     de: {
@@ -842,32 +970,32 @@
       gallery_hint: "Alle Fotos wurden in und um Tauplitz aufgenommen.",
       discover_h2: "Tauplitz & das Ausseerland entdecken",
       discover_lead: "Tauplitz liegt im Ausseerland–Salzkammergut, einer der schönsten Ecken Österreichs – eine Landschaft aus türkisfarbenen Seen, Kalksteingipfeln und märchenhaften Dörfern, vieles davon UNESCO-Welterbe. Hier erwartet Sie.",
-      c1_h3: "🏔️ Tauplitzalm & die Sechs Seen", c1_badge: "Direkt vor der Tür",
+      c1_h3: "Tauplitzalm & die Sechs Seen", c1_badge: "Direkt vor der Tür",
       c1_p_html: "Eines der größten Hochplateaus der Alpen (1.650–1.965 m). Die berühmte <strong>Sechs-Seen-Wanderung</strong> führt am Steirersee, Großsee, Schwarzensee, Tauplitzsee, Krukensee und dem kleinen Märchensee vorbei. Das Plateau ist per Sessellift oder der malerischen Mautstraße erreichbar.",
       c1_tip: "Tipp: ca. 3–4 Stunden, geeignet für fitte Familien. Mit Mittagessen in einer Almhütte kombinieren.",
-      c2_h3: "🛶 Grundlsee & die Drei-Seen-Tour", c2_badge: "~25 Min.",
+      c2_h3: "Grundlsee & die Drei-Seen-Tour", c2_badge: "~25 Min.",
       c2_p_html: "Der größte See der Steiermark, das „Steirische Meer\". Unternehmen Sie die klassische <strong>Drei-Seen-Tour</strong> im traditionellen Holzboot: Grundlsee → der geheimnisvolle <strong>Toplitzsee</strong> (Legenden über versunkene Kriegsschätze) → der abgelegene Kammersee, Quell der Traun.",
       c2_tip: "Tipp: Bootsfahrt mit einem Mittagessen am See in Gössl kombinieren.",
-      c3_h3: "🏘️ Hallstatt – UNESCO-Welterbe", c3_badge: "~45 Min.",
+      c3_h3: "Hallstatt – UNESCO-Welterbe", c3_badge: "~45 Min.",
       c3_p_html: "Vielleicht das meistfotografierte Dorf der Welt, an einen steilen Berghang über seinem See geschmiegt. Besuchen Sie das <strong>älteste Salzbergwerk der Welt</strong>, fahren Sie zum <strong>Skywalk „Welterbeblick\"</strong> für den ikonischen Ausblick und bestaunen Sie das Beinhaus neben der Kirche.",
       c3_tip: "Tipp: Früh morgens oder am späten Nachmittag kommen, um den Tagesgästen zuvorzukommen.",
-      c4_h3: "🚠 Dachstein & Krippenstein", c4_badge: "~40 Min.",
+      c4_h3: "Dachstein & Krippenstein", c4_badge: "~40 Min.",
       c4_p_html: "Seilbahn von Obertraun hinauf zum <strong>Krippenstein</strong> und der atemberaubenden <strong>5-Fingers</strong>-Aussichtsplattform. Erkunden Sie die <strong>Dachstein-Eishöhle</strong> und Mammuthöhle oder zieht es Sie zum Gletscher mit Hängebrücke und „Treppe ins Nichts\".",
       c4_tip: "Tipp: Eine warme Schicht einpacken – die Eishöhlen sind auch im Sommer kalt.",
-      c5_h3: "🌼 Bad Aussee & Altaussee", c5_badge: "~20 Min.",
+      c5_h3: "Bad Aussee & Altaussee", c5_badge: "~20 Min.",
       c5_p_html: "<strong>Bad Aussee</strong>, im geografischen Mittelpunkt Österreichs, ist bekannt für das Frühlings-<strong>Narzissenfest</strong>. Das nahegelegene <strong>Altaussee</strong> bietet einen atemberaubenden See, die <strong>Loser Panoramastraße</strong> und ein Salzbergwerk, in dem geraubte Kunstwerke aus dem Zweiten Weltkrieg versteckt wurden.",
       c5_tip: "Tipp: Die Loser Panoramastraße für atemberaubende Seeblicke befahren.",
-      c6_h3: "🎿 Der Kulm – Skiflugschanze", c6_badge: "~10 Min.",
+      c6_h3: "Der Kulm – Skiflugschanze", c6_badge: "~10 Min.",
       c6_p_html: "Eine der größten Skiflugschanzen der Welt, nahe Bad Mitterndorf. Regelmäßig Austragungsort der <strong>Skiflug-Weltmeisterschaft</strong> – Athleten fliegen über 200 m durch die Luft. Selbst außerhalb der Wettkampfzeit ist der Anblick beeindruckend.",
       c6_tip: "Tipp: Ein Skiflugwettbewerb live zu erleben ist unvergesslich.",
-      c7_h3: "♨️ Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 Min.",
+      c7_h3: "Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 Min.",
       c7_p_html: "Ihr nächstgelegener Ort für Einkäufe, Cafés und Restaurants – und Heimat der <strong>GrimmingTherme</strong>. Ideal zum Entspannen müder Muskeln nach einem Bergtag, alles unter dem Blick des <strong>Grimming</strong>, des „einsamen Riesen\" der Region.",
       c7_tip: "Tipp: Die ideale Option bei schlechtem Wetter – Hallenbäder, Saunen und Entspannungsbereiche.",
-      c8_h3: "🗺️ Noch mehr entdecken", c8_badge: "In der Nähe",
+      c8_h3: "Noch mehr entdecken", c8_badge: "In der Nähe",
       c8_p_html: "<strong>Pürgg</strong>, die „Wiege der Steiermark\" mit Fresken aus dem 12. Jahrhundert • der türkisfarbene <strong>Salzasee</strong> • der ruhige Badesee <strong>Ödensee</strong> • benachbarte Skigebiete <strong>Riesneralm</strong> und <strong>Planneralm</strong>.",
       c8_tip: "Tipp: Fragen Sie uns nach unseren persönlichen Favoriten – wir teilen unsere lokalen Geheimtipps gerne.",
       seasons_h2: "Jede Jahreszeit hat ihren Zauber",
-      winter_h3: "❄️ Winter", summer_h3: "☀️ Sommer",
+      winter_h3: "Winter", summer_h3: "Sommer",
       w1: "Ski & Snowboard auf der Tauplitz (≈ 40 km Pisten)",
       w2: "Langlaufen & Winterwanderwege",
       w3: "Skitourengehen & Schneeschuhwandern über das Plateau",
@@ -883,9 +1011,9 @@
       loc_h2: "Lage",
       loc_lead: "Tauplitz ist ein kleines Alpendorf im Herzen des Steirischen Salzkammerguts, Österreich – gut erreichbar mit dem Auto aus Belgien, den Niederlanden und Deutschland, größtenteils über Autobahn.",
       map_line3: "Steiermark, Österreich",
-      fact1: "✈️ Flughafen Salzburg — ~90 Min.", fact2: "✈️ Flughafen Graz — ~90 Min.",
-      fact3: "🚗 München — ~2,5 Std. via A8/A10", fact4: "🚗 Brüssel — ~9–10 Std. via E40/A8/A10",
-      fact5: "🚂 Zug nach Stainach-Irdning, dann Taxi ~20 Min.",
+      fact1: "Flughafen Salzburg — ~90 Min.", fact2: "Flughafen Graz — ~90 Min.",
+      fact3: "München — ~2,5 Std. via A8/A10", fact4: "Brüssel — ~9–10 Std. via E40/A8/A10",
+      fact5: "Zug nach Stainach-Irdning, dann Taxi ~20 Min.",
       map_btn: "Karte öffnen & Route planen ↗",
       map_note_html: "Brauchen Sie Hilfe bei der Anreiseplanung? <a href=\"#contact\">Schreiben Sie uns</a> – wir helfen gerne.",
       book_h2: "Ihren Aufenthalt buchen",
@@ -901,7 +1029,18 @@
       opt1: "Verfügbarkeitsanfrage", opt2: "Allgemeine Frage zur Wohnung",
       opt3: "Frage zur Region", opt4: "Hilfe bei der Anreise", opt5: "Sonstiges",
       form_note_html: "Mit „Nachricht senden\" öffnet sich Ihre E-Mail-App mit dieser Nachricht, adressiert an <a href=\"mailto:alpenglueck.tauplitz@gmail.com\">alpenglueck.tauplitz@gmail.com</a>. Es werden keine Daten an Server oder Dritte gesendet.",
-      btn_submit: "Nachricht senden ✉️",
+      btn_submit: "Nachricht senden",
+      nav_reviews: "Bewertungen",
+      hero_cta: "Verfügbarkeit anfragen →",
+      quote_band: "Wo die Berge auf die Stille treffen",
+      testi_h2: "Was unsere Gäste sagen",
+      testi_sub: "Ein paar Stimmen von kürzlichen Aufenthalten.",
+      t1_q: "Ein perfektes Alpenversteck — makellos, gemütlich, und der Blick auf den Grimming ist unvergesslich. Wir planen schon unsere Rückkehr.",
+      t1_n: "Sophie & Marc · Belgien",
+      t2_q: "Alles für einen Bergurlaub — wenige Minuten von den Pisten und der Therme entfernt und wunderbar ausgestattet.",
+      t2_n: "Familie Berger · Deutschland",
+      t3_q: "So friedlich und liebevoll eingerichtet. Die Sechs-Seen-Wanderung direkt vom Dorf war das Highlight unseres Sommers.",
+      t3_n: "Jan & Petra · Niederlande",
       footer_privacy: "Datenschutz"
     },
     nl: {
@@ -919,32 +1058,32 @@
       gallery_hint: "Alle foto's zijn gemaakt in en rond Tauplitz.",
       discover_h2: "Ontdek Tauplitz & het Ausseerland",
       discover_lead: "Tauplitz ligt in het Ausseerland–Salzkammergut, een van de mooiste hoekjes van Oostenrijk – een landschap van turquoise meren, kalkstenen toppen en sprookjesachtige dorpen, grotendeels UNESCO Werelderfgoed. Dit staat u te wachten.",
-      c1_h3: "🏔️ Tauplitzalm & de Zes Meren", c1_badge: "Vlak voor de deur",
+      c1_h3: "Tauplitzalm & de Zes Meren", c1_badge: "Vlak voor de deur",
       c1_p_html: "Een van de grootste hoogvlaktes van de Alpen (1.650–1.965 m). De beroemde <strong>Zesmeerenwandeling (6-Seen-Wanderung)</strong> loopt langs de Steirersee, Großsee, Schwarzensee, Tauplitzsee, Krukensee en het kleine Märchensee (\"Sprookjesmeer\"). Bereik het plateau met de stoeltjeslift of de schilderachtige tolweg.",
       c1_tip: "Tip: ongeveer 3–4 uur, geschikt voor fitte families. Combineer met een lunch in een berghut.",
-      c2_h3: "🛶 Grundlsee & de Driemerenwandeling", c2_badge: "~25 min.",
+      c2_h3: "Grundlsee & de Driemerenwandeling", c2_badge: "~25 min.",
       c2_p_html: "Het grootste meer van Stiermarken, de \"Stiermarkse Zee\". Maak de klassieke <strong>Driemerenwandeling</strong> met een traditionele houten boot: Grundlsee → het mysterieuze <strong>Toplitzsee</strong> → het afgelegen Kammersee, bron van de rivier de Traun.",
       c2_tip: "Tip: combineer de boottocht met een lunch aan het meer in Gössl.",
-      c3_h3: "🏘️ Hallstatt – UNESCO Erfgoed", c3_badge: "~45 min.",
+      c3_h3: "Hallstatt – UNESCO Erfgoed", c3_badge: "~45 min.",
       c3_p_html: "Misschien wel het meest gefotografeerde dorp ter wereld, geklemd aan een steile berghelling boven zijn meer. Bezoek de <strong>oudste zoutmijn ter wereld</strong>, rijd omhoog naar de <strong>Skywalk \"Welterbeblick\"</strong> voor het iconische uitzicht en bekijk het bijzondere Beenderhuis.",
       c3_tip: "Tip: kom vroeg in de ochtend of laat in de middag om de dagtoeristen voor te zijn.",
-      c4_h3: "🚠 Dachstein & Krippenstein", c4_badge: "~40 min.",
+      c4_h3: "Dachstein & Krippenstein", c4_badge: "~40 min.",
       c4_p_html: "Kabelbaan vanuit Obertraun omhoog naar <strong>Krippenstein</strong> en het adembenemende <strong>5 Vingers</strong> uitkijkplatform boven een steile afgrond. Verken de <strong>Dachstein IJsgrot</strong> en Mammoetgrot, of ga naar de gletsjer met zijn hangbrug.",
       c4_tip: "Tip: neem een warme laag mee – de ijsgrotten blijven het hele jaar koud.",
-      c5_h3: "🌼 Bad Aussee & Altaussee", c5_badge: "~20 min.",
+      c5_h3: "Bad Aussee & Altaussee", c5_badge: "~20 min.",
       c5_p_html: "<strong>Bad Aussee</strong>, in het geografische hart van Oostenrijk, staat bekend om het lente-<strong>Narzissenfest</strong> (Narcissenfestival). Het nabijgelegen <strong>Altaussee</strong> heeft een prachtig meer, de dramatische <strong>Loser Panoramastraße</strong> en een zoutmijn waar WOII-kunstwerken werden verborgen.",
       c5_tip: "Tip: rijd de Loser Panoramastraße voor adembenemende uitzichten op het meer.",
-      c6_h3: "🎿 De Kulm – Schansspringen", c6_badge: "~10 min.",
+      c6_h3: "De Kulm – Schansspringen", c6_badge: "~10 min.",
       c6_p_html: "Een van de grootste schansspringheuvels ter wereld, nabij Bad Mitterndorf. Regelmatig gastheer van het <strong>Wereldkampioenschap Schansspringen</strong> – atleten vliegen meer dan 200 m door de lucht.",
       c6_tip: "Tip: een vliegwedstrijd live bijwonen is een onvergetelijk spektakel.",
-      c7_h3: "♨️ Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 min.",
+      c7_h3: "Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 min.",
       c7_p_html: "Het dichtstbijzijnde stadje voor winkels, cafés en restaurants – en thuisbasis van de <strong>GrimmingTherme</strong>. Ideaal om vermoeide spieren te verzorgen na een dag in de bergen, onder het toeziend oog van de <strong>Grimming</strong>.",
       c7_tip: "Tip: de ideale optie op een regenachtige dag – binnenzwembaden, sauna's en ontspanningsruimtes.",
-      c8_h3: "🗺️ Meer te ontdekken", c8_badge: "In de buurt",
+      c8_h3: "Meer te ontdekken", c8_badge: "In de buurt",
       c8_p_html: "<strong>Pürgg</strong>, de \"wieg van Stiermarken\" met 12e-eeuwse fresco's • het turquoise <strong>Salzareservoir</strong> • het rustige zwemmeer <strong>Ödensee</strong> • naburige skigebieden <strong>Riesneralm</strong> en <strong>Planneralm</strong>.",
       c8_tip: "Tip: vraag ons naar onze persoonlijke favorieten – we delen graag onze lokale geheimen.",
       seasons_h2: "Elk seizoen heeft zijn magie",
-      winter_h3: "❄️ Winter", summer_h3: "☀️ Zomer",
+      winter_h3: "Winter", summer_h3: "Zomer",
       w1: "Ski & snowboard op de Tauplitz (≈ 40 km pistes)",
       w2: "Langlaufen & winterwandelingen",
       w3: "Skitochten & sneeuwschoenwandelen over het plateau",
@@ -960,9 +1099,9 @@
       loc_h2: "Locatie",
       loc_lead: "Tauplitz is een klein alpendorpje in het hart van het Steirische Salzkammergut in Oostenrijk – goed bereikbaar met de auto vanuit België, Nederland en Duitsland, grotendeels via snelweg.",
       map_line3: "Stiermarken, Oostenrijk",
-      fact1: "✈️ Luchthaven Salzburg — ~90 min.", fact2: "✈️ Luchthaven Graz — ~90 min.",
-      fact3: "🚗 München — ~2,5 u via A8/A10", fact4: "🚗 Brussel — ~9–10 u via E40/A8/A10",
-      fact5: "🚂 Trein naar Stainach-Irdning, dan taxi ~20 min.",
+      fact1: "Luchthaven Salzburg — ~90 min.", fact2: "Luchthaven Graz — ~90 min.",
+      fact3: "München — ~2,5 u via A8/A10", fact4: "Brussel — ~9–10 u via E40/A8/A10",
+      fact5: "Trein naar Stainach-Irdning, dan taxi ~20 min.",
       map_btn: "Kaart openen & route plannen ↗",
       map_note_html: "Hulp nodig bij het plannen van uw route? <a href=\"#contact\">Stuur ons een bericht</a> – we helpen graag.",
       book_h2: "Uw verblijf boeken",
@@ -978,7 +1117,18 @@
       opt1: "Vraag over beschikbaarheid", opt2: "Algemene vraag over het appartement",
       opt3: "Vraag over de regio", opt4: "Hulp bij de route", opt5: "Overige",
       form_note_html: "Door op \"Bericht verzenden\" te klikken, opent uw e-mailapp met dit bericht, gericht aan <a href=\"mailto:alpenglueck.tauplitz@gmail.com\">alpenglueck.tauplitz@gmail.com</a>. Er worden geen gegevens naar servers of derden verzonden.",
-      btn_submit: "Bericht verzenden ✉️",
+      btn_submit: "Bericht verzenden",
+      nav_reviews: "Beoordelingen",
+      hero_cta: "Beschikbaarheid bekijken →",
+      quote_band: "Waar de bergen de stilte ontmoeten",
+      testi_h2: "Wat onze gasten zeggen",
+      testi_sub: "Een paar woorden van recente verblijven.",
+      t1_q: "Een perfecte alpenschuilplaats — brandschoon, gezellig, en het uitzicht op de Grimming is onvergetelijk. We plannen alweer onze terugkeer.",
+      t1_n: "Sophie & Marc · België",
+      t2_q: "Alles wat je nodig hebt voor een bergvakantie — minuten van de pistes en de thermen, en prachtig uitgerust.",
+      t2_n: "Familie Berger · Duitsland",
+      t3_q: "Zo rustig en doordacht ingericht. De Zesmeerenwandeling vanuit het dorp was het hoogtepunt van onze zomer.",
+      t3_n: "Jan & Petra · Nederland",
       footer_privacy: "Privacybeleid"
     },
     cs: {
@@ -996,32 +1146,32 @@
       gallery_hint: "Všechny fotografie byly pořízeny v Tauplitzu a jeho okolí.",
       discover_h2: "Objevte Tauplitz & Ausseerland",
       discover_lead: "Tauplitz leží v oblasti Ausseerland–Salzkammergut, jednom z nejkrásnějších koutů Rakouska – krajině tyrkysových jezer, vápencových vrcholů a pohádkových vesnic, z nichž mnohé jsou UNESCO dědictví. Zde je to, co vás čeká.",
-      c1_h3: "🏔️ Tauplitzalm & Šest jezer", c1_badge: "Přímo přede dveřmi",
+      c1_h3: "Tauplitzalm & Šest jezer", c1_badge: "Přímo přede dveřmi",
       c1_p_html: "Jedna z největších horských plošin v Alpách (1 650–1 965 m). Slavná <strong>Túra po šesti jezerech (6-Seen-Wanderung)</strong> vede kolem Steirersee, Großsee, Schwarzensee, Tauplitzsee, Krukensee a malého Märchensee. Na plošinu se dostanete lanovkou nebo poplatkovou silnicí.",
       c1_tip: "Tip: cca 3–4 hodiny, vhodné pro zdatné rodiny. Kombinujte s obědem v horské chatě.",
-      c2_h3: "🛶 Grundlsee & Výlet po třech jezerech", c2_badge: "~25 min.",
+      c2_h3: "Grundlsee & Výlet po třech jezerech", c2_badge: "~25 min.",
       c2_p_html: "Největší jezero ve Štýrsku, „Štýrské moře\". Vyrazte na klasický <strong>Výlet po třech jezerech</strong> tradičním dřevěným člunem: Grundlsee → tajemné <strong>Toplitzsee</strong> → odlehlé Kammersee, pramen řeky Traun.",
       c2_tip: "Tip: kombinujte plavbu s obědem u jezera v Gössl.",
-      c3_h3: "🏘️ Hallstatt – UNESCO dědictví", c3_badge: "~45 min.",
+      c3_h3: "Hallstatt – UNESCO dědictví", c3_badge: "~45 min.",
       c3_p_html: "Snad nejfotografovanější vesnice na světě, přitisklá ke strmému svahu nad jezerem. Navštivte <strong>nejstarší solný důl na světě</strong>, vyjeďte na <strong>Skywalk „Welterbeblick\"</strong> pro ikonický výhled a prohlédněte si kostnici u kostela.",
       c3_tip: "Tip: přijeďte brzy ráno nebo pozdě odpoledne, abyste předešli davům jednodenních výletníků.",
-      c4_h3: "🚠 Dachstein & Krippenstein", c4_badge: "~40 min.",
+      c4_h3: "Dachstein & Krippenstein", c4_badge: "~40 min.",
       c4_p_html: "Lanovka z Obertraunu na <strong>Krippenstein</strong> a úchvatnou vyhlídkovou platformu <strong>5 Fingers</strong>. Prozkoumejte <strong>Dachsteinskou ledovou jeskyni</strong> a Mamutí jeskyni nebo se vydejte na ledovec se závěsným mostem.",
       c4_tip: "Tip: vezměte si teplou vrstvu – ledové jeskyně jsou celoročně studené.",
-      c5_h3: "🌼 Bad Aussee & Altaussee", c5_badge: "~20 min.",
+      c5_h3: "Bad Aussee & Altaussee", c5_badge: "~20 min.",
       c5_p_html: "<strong>Bad Aussee</strong>, v geografickém středu Rakouska, je proslulé jarním <strong>Narzissenfest</strong> (Festival narcisů). Nedalekéh <strong>Altaussee</strong> nabízí nádherné jezero, dramatickou <strong>Loser Panoramastraße</strong> a solný důl s ukrytými válečnými uměleckými díly.",
       c5_tip: "Tip: projet Loser Panoramastraße pro ohromující výhledy na jezero.",
-      c6_h3: "🎿 Kulm – Skoky na lyžích", c6_badge: "~10 min.",
+      c6_h3: "Kulm – Skoky na lyžích", c6_badge: "~10 min.",
       c6_p_html: "Jeden z největších skokanských mostků na světě, u Bad Mitterndorfu. Pravidelně pořádá <strong>Mistrovství světa ve skocích na lyžích</strong> – závodníci létají přes 200 m vzduchem.",
       c6_tip: "Tip: zažít závod ve skocích naživo je nezapomenutelná podívaná.",
-      c7_h3: "♨️ Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 min.",
+      c7_h3: "Bad Mitterndorf & GrimmingTherme", c7_badge: "~5 min.",
       c7_p_html: "Nejbližší město pro nákupy, kavárny a restaurace – a domov termálního lázně <strong>GrimmingTherme</strong>. Ideální pro regeneraci unavených svalů po dni v horách, pod pohledem <strong>Grimmingu</strong>, „osamělého obra\" oblasti.",
       c7_tip: "Tip: ideální volba za deštivého dne – kryté bazény, sauny a relaxační prostory.",
-      c8_h3: "🗺️ Více k objevení", c8_badge: "V okolí",
+      c8_h3: "Více k objevení", c8_badge: "V okolí",
       c8_p_html: "<strong>Pürgg</strong>, „kolébka Štýrska\" s freskami z 12. století • tyrkysová <strong>nádrž Salza</strong> • klidné koupací jezero <strong>Ödensee</strong> • sousední lyžařská střediska <strong>Riesneralm</strong> a <strong>Planneralm</strong>.",
       c8_tip: "Tip: zeptejte se nás na naše osobní tipy – rádi se podělíme o místní tajemství.",
       seasons_h2: "Každé roční období má své kouzlo",
-      winter_h3: "❄️ Zima", summer_h3: "☀️ Léto",
+      winter_h3: "Zima", summer_h3: "Léto",
       w1: "Lyžování & snowboard na Tauplitz (≈ 40 km sjezdovek)",
       w2: "Běžecké lyžování & zimní turistické stezky",
       w3: "Skialpinismus & sněžnicová turistika po plošině",
@@ -1037,9 +1187,9 @@
       loc_h2: "Poloha",
       loc_lead: "Tauplitz je malá alpská vesnice v srdci Štýrského Salzkammergutu v Rakousku – snadno dosažitelná autem z Belgie, Nizozemska a Německa, převážně po dálnici.",
       map_line3: "Štýrsko, Rakousko",
-      fact1: "✈️ Letiště Salzburg — ~90 min.", fact2: "✈️ Letiště Graz — ~90 min.",
-      fact3: "🚗 Mnichov — ~2,5 h po A8/A10", fact4: "🚗 Brusel — ~9–10 h po E40/A8/A10",
-      fact5: "🚂 Vlak do Stainach-Irdning, pak taxi ~20 min.",
+      fact1: "Letiště Salzburg — ~90 min.", fact2: "Letiště Graz — ~90 min.",
+      fact3: "Mnichov — ~2,5 h po A8/A10", fact4: "Brusel — ~9–10 h po E40/A8/A10",
+      fact5: "Vlak do Stainach-Irdning, pak taxi ~20 min.",
       map_btn: "Otevřít mapu & naplánovat trasu ↗",
       map_note_html: "Potřebujete pomoc s plánováním trasy? <a href=\"#contact\">Napište nám</a> – rádi pomůžeme.",
       book_h2: "Rezervujte svůj pobyt",
@@ -1055,11 +1205,24 @@
       opt1: "Dotaz na dostupnost", opt2: "Obecný dotaz o apartmánu",
       opt3: "Dotaz na oblast", opt4: "Pomoc s trasou", opt5: "Ostatní",
       form_note_html: "Kliknutím na „Odeslat zprávu\" se otevře vaše e-mailová aplikace s touto zprávou, adresovanou na <a href=\"mailto:alpenglueck.tauplitz@gmail.com\">alpenglueck.tauplitz@gmail.com</a>. Žádná data nejsou odesílána na servery ani třetím stranám.",
-      btn_submit: "Odeslat zprávu ✉️",
+      btn_submit: "Odeslat zprávu",
+      nav_reviews: "Recenze",
+      hero_cta: "Zjistit dostupnost →",
+      quote_band: "Kde hory potkávají ticho",
+      testi_h2: "Co říkají naši hosté",
+      testi_sub: "Pár slov z nedávných pobytů.",
+      t1_q: "Dokonalý alpský úkryt — bez poskvrnky, útulný a výhled na Grimming je nezapomenutelný. Už plánujeme návrat.",
+      t1_n: "Sophie & Marc · Belgie",
+      t2_q: "Vše, co potřebujete na horskou dovolenou — pár minut od sjezdovek a lázní a krásně vybavené.",
+      t2_n: "Rodina Berger · Německo",
+      t3_q: "Tak klidné a promyšleně zařízené. Túra po šesti jezerech přímo z vesnice byla vrcholem našeho léta.",
+      t3_n: "Jan & Petra · Nizozemsko",
       footer_privacy: "Ochrana soukromí"
     }
   };
+</script>
 
+<script id="i18n-runtime">
   function setLang(lang) {
     if (!translations[lang]) lang = 'en';
     var t = translations[lang];
@@ -1088,7 +1251,9 @@
     if (['en','de','nl','cs'].indexOf(stored) === -1) stored = 'en';
     setLang(stored);
   })();
+</script>
 
+<script>
   (function () {
     var figs = Array.prototype.slice.call(document.querySelectorAll('.gallery figure'));
     var imgs = figs.map(function(f){ return f.querySelector('img'); });
