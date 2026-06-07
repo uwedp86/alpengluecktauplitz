@@ -107,8 +107,8 @@ def build_lang(template_html, translations, lang):
         if el["src"].startswith("images/"):
             el["src"] = "/" + el["src"]
     for el in soup.find_all(href=True):
-        if el["href"] == "privacy.html":
-            el["href"] = "/privacy.html"
+        if el["href"] in ("privacy.html", "impressum.html"):
+            el["href"] = "/" + el["href"]
         elif el["href"].startswith("images/"):
             el["href"] = "/" + el["href"]
 
