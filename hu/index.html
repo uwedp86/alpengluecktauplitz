@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="hu">
-<head><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-CPYzcf+lEZLZ3PIYciNQ85d0Dvy50EFGmh4IWLs8eIg=' 'sha256-+sWWaWFix1SBVcb0orN++wmCjOJXastX5As4LAxneHo='; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests" http-equiv="Content-Security-Policy">
+<head><meta content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-CPYzcf+lEZLZ3PIYciNQ85d0Dvy50EFGmh4IWLs8eIg=' 'sha256-+sWWaWFix1SBVcb0orN++wmCjOJXastX5As4LAxneHo='; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" http-equiv="Content-Security-Policy">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title data-i18n="page_title">Alpengl&uuml;ck Tauplitz &ndash; Alpesi apartman a St&aacute;jer-Alpokban</title>
@@ -24,6 +24,13 @@
     }
 
     html { scroll-behavior: smooth; }
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: #3a6b4a; color: #fff; padding: .5rem 1rem;
+      border-radius: 0 0 8px 8px; font-size: .9rem; z-index: 9999;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       color: var(--text);
@@ -378,7 +385,7 @@
       box-shadow:0 8px 24px rgba(0,0,0,.10);
     }
   </style>
-<meta content="strict-origin-when-cross-origin" name="referrer"><link href="https://alpenglueck-tauplitz.be/hu/" rel="canonical"><link href="https://alpenglueck-tauplitz.be/" hreflang="en" rel="alternate"><link href="https://alpenglueck-tauplitz.be/de/" hreflang="de" rel="alternate"><link href="https://alpenglueck-tauplitz.be/nl/" hreflang="nl" rel="alternate"><link href="https://alpenglueck-tauplitz.be/cs/" hreflang="cs" rel="alternate"><link href="https://alpenglueck-tauplitz.be/hu/" hreflang="hu" rel="alternate"><link href="https://alpenglueck-tauplitz.be/" hreflang="x-default" rel="alternate"><meta content="website" property="og:type"><meta content="Alpengl&uuml;ck Tauplitz" property="og:site_name"><meta content="Alpengl&uuml;ck Tauplitz &ndash; Alpesi apartman a St&aacute;jer-Alpokban" property="og:title"><meta content="Hangulatos alpesi apartman Tauplitzban, Ausztri&aacute;ban. B&aacute;zisa a Tauplitzalm, Grundlsee, Hallstatt &eacute;s a Dachstein felfedez&eacute;s&eacute;hez. Foglaljon a Booking.com-on vagy az Airbnb-n kereszt&uuml;l." property="og:description"><meta content="https://alpenglueck-tauplitz.be/hu/" property="og:url"><meta content="https://alpenglueck-tauplitz.be/images/opt/hero-1600.jpg" property="og:image"><meta content="hu_HU" property="og:locale"><meta content="summary_large_image" name="twitter:card"><meta content="Alpengl&uuml;ck Tauplitz &ndash; Alpesi apartman a St&aacute;jer-Alpokban" name="twitter:title"><meta content="Hangulatos alpesi apartman Tauplitzban, Ausztri&aacute;ban. B&aacute;zisa a Tauplitzalm, Grundlsee, Hallstatt &eacute;s a Dachstein felfedez&eacute;s&eacute;hez. Foglaljon a Booking.com-on vagy az Airbnb-n kereszt&uuml;l." name="twitter:description"><meta content="https://alpenglueck-tauplitz.be/images/opt/hero-1600.jpg" name="twitter:image"><meta content="AT-6" name="geo.region"><meta content="Tauplitz, Bad Mitterndorf" name="geo.placename"><meta content="47.5717;14.0086" name="geo.position"><meta content="47.5717, 14.0086" name="ICBM"><meta content="#3a6b4a" name="theme-color"><meta content="index, follow" name="robots"><meta content="Alpengl&uuml;ck Tauplitz" name="author"><script type="application/ld+json">{
+<meta content="strict-origin-when-cross-origin" name="referrer"><link href="/favicon.svg" rel="icon" type="image/svg+xml"><link as="font" crossorigin href="/assets/fonts/fraunces-600-latin.woff2" rel="preload" type="font/woff2"><link as="font" crossorigin href="/assets/fonts/inter-400-latin.woff2" rel="preload" type="font/woff2"><link as="image" fetchpriority="high" imagesizes="100vw" imagesrcset="/images/opt/hero-1200.webp 1200w, /images/opt/hero-2000.webp 2000w" rel="preload"><link href="https://alpenglueck-tauplitz.be/hu/" rel="canonical"><link href="https://alpenglueck-tauplitz.be/" hreflang="en" rel="alternate"><link href="https://alpenglueck-tauplitz.be/de/" hreflang="de" rel="alternate"><link href="https://alpenglueck-tauplitz.be/nl/" hreflang="nl" rel="alternate"><link href="https://alpenglueck-tauplitz.be/cs/" hreflang="cs" rel="alternate"><link href="https://alpenglueck-tauplitz.be/hu/" hreflang="hu" rel="alternate"><link href="https://alpenglueck-tauplitz.be/" hreflang="x-default" rel="alternate"><meta content="website" property="og:type"><meta content="Alpengl&uuml;ck Tauplitz" property="og:site_name"><meta content="Alpengl&uuml;ck Tauplitz &ndash; Alpesi apartman a St&aacute;jer-Alpokban" property="og:title"><meta content="Hangulatos alpesi apartman Tauplitzban, Ausztri&aacute;ban. B&aacute;zisa a Tauplitzalm, Grundlsee, Hallstatt &eacute;s a Dachstein felfedez&eacute;s&eacute;hez. Foglaljon a Booking.com-on vagy az Airbnb-n kereszt&uuml;l." property="og:description"><meta content="https://alpenglueck-tauplitz.be/hu/" property="og:url"><meta content="https://alpenglueck-tauplitz.be/images/opt/hero-1600.jpg" property="og:image"><meta content="hu_HU" property="og:locale"><meta content="summary_large_image" name="twitter:card"><meta content="Alpengl&uuml;ck Tauplitz &ndash; Alpesi apartman a St&aacute;jer-Alpokban" name="twitter:title"><meta content="Hangulatos alpesi apartman Tauplitzban, Ausztri&aacute;ban. B&aacute;zisa a Tauplitzalm, Grundlsee, Hallstatt &eacute;s a Dachstein felfedez&eacute;s&eacute;hez. Foglaljon a Booking.com-on vagy az Airbnb-n kereszt&uuml;l." name="twitter:description"><meta content="https://alpenglueck-tauplitz.be/images/opt/hero-1600.jpg" name="twitter:image"><meta content="AT-6" name="geo.region"><meta content="Tauplitz, Bad Mitterndorf" name="geo.placename"><meta content="47.5717;14.0086" name="geo.position"><meta content="47.5717, 14.0086" name="ICBM"><meta content="#3a6b4a" name="theme-color"><meta content="index, follow" name="robots"><meta content="Alpengl&uuml;ck Tauplitz" name="author"><script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
   "name": "Alpenglück Tauplitz",
@@ -433,10 +440,11 @@
 }</script></head>
 <body>
 <!-- NAV -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="nav" id="top">
 <div class="nav-inner">
 <a class="nav-logo" href="#top">Alpengl&uuml;ck Tauplitz</a>
-<nav>
+<nav aria-label="Main navigation">
 <a data-i18n="nav_apt" href="#about">Apartman</a>
 <a data-i18n="nav_photos" href="#photos">Fot&oacute;k</a>
 <a data-i18n="nav_discover" href="#discover">Felfedez&eacute;s</a>
@@ -456,7 +464,7 @@
 </div>
 </header>
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="main-content">
 <picture>
 <source sizes="100vw" srcset="/images/opt/hero-1200.webp 1200w, /images/opt/hero-2000.webp 2000w" type="image/webp">
 <img alt="Snow-covered alpine landscape at sunset near Tauplitz" decoding="async" fetchpriority="high" height="1200" src="/images/opt/hero-1600.jpg" width="1600">

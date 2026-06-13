@@ -23,6 +23,13 @@
     }
 
     html { scroll-behavior: smooth; }
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: #3a6b4a; color: #fff; padding: .5rem 1rem;
+      border-radius: 0 0 8px 8px; font-size: .9rem; z-index: 9999;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       color: var(--text);
@@ -381,10 +388,11 @@
 <body>
 
 <!-- NAV -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="nav" id="top">
   <div class="nav-inner">
     <a class="nav-logo" href="#top">Alpenglück Tauplitz</a>
-    <nav>
+    <nav aria-label="Main navigation">
       <a href="#about" data-i18n="nav_apt">Apartment</a>
       <a href="#photos" data-i18n="nav_photos">Photos</a>
       <a href="#discover" data-i18n="nav_discover">Discover</a>
@@ -405,7 +413,7 @@
 </header>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="main-content">
   <picture>
     <source type="image/webp" srcset="images/opt/hero-1200.webp 1200w, images/opt/hero-2000.webp 2000w" sizes="100vw" />
     <img src="images/opt/hero-1600.jpg" width="1600" height="1200" fetchpriority="high" decoding="async" alt="Snow-covered alpine landscape at sunset near Tauplitz" />

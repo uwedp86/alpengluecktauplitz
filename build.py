@@ -8,6 +8,7 @@ fully-localized static HTML for en/de/nl/cs with per-page SEO metadata
 Re-runnable: reads from template.html, never from its own output.
 """
 import base64
+import datetime
 import hashlib
 import json
 import os
@@ -186,7 +187,9 @@ def inject_head(soup, lang, url, title, desc):
         "font-src 'self'",
         "style-src 'self' 'unsafe-inline'",
         "script-src 'self' " + " ".join(script_hashes),
-        "form-action 'none'",
+        # form uses JS window.location.href (mailto), not a real POST submission,
+        # so we allow 'self' to avoid blocking the mailto navigation handler.
+        "form-action 'self'",
         "frame-ancestors 'none'",
         "upgrade-insecure-requests",
     ])
@@ -195,6 +198,20 @@ def inject_head(soup, lang, url, title, desc):
     csp_meta["content"] = csp
     head.insert(0, csp_meta)
     meta({"name": "referrer", "content": "strict-origin-when-cross-origin"})
+
+    # Favicon
+    link({"rel": "icon", "type": "image/svg+xml", "href": "/favicon.svg"})
+
+    # Preload critical fonts (Fraunces 600 latin for headings, Inter 400 latin for body).
+    link({"rel": "preload", "href": "/assets/fonts/fraunces-600-latin.woff2",
+          "as": "font", "type": "font/woff2", "crossorigin": ""})
+    link({"rel": "preload", "href": "/assets/fonts/inter-400-latin.woff2",
+          "as": "font", "type": "font/woff2", "crossorigin": ""})
+
+    # Preload hero image so the browser discovers it early.
+    link({"rel": "preload", "as": "image", "imagesrcset":
+          "/images/opt/hero-1200.webp 1200w, /images/opt/hero-2000.webp 2000w",
+          "imagesizes": "100vw", "fetchpriority": "high"})
 
     # Canonical
     link({"rel": "canonical", "href": url})
@@ -272,6 +289,19 @@ def inject_head(soup, lang, url, title, desc):
     head.append(script)
 
 
+def update_sitemap_lastmod():
+    """Rewrite every <lastmod> in sitemap.xml to today's date."""
+    today = datetime.date.today().isoformat()
+    sm_path = os.path.join(ROOT, "sitemap.xml")
+    with open(sm_path, encoding="utf-8") as f:
+        content = f.read()
+    updated = re.sub(r"<lastmod>[^<]+</lastmod>", "<lastmod>%s</lastmod>" % today, content)
+    if updated != content:
+        with open(sm_path, "w", encoding="utf-8") as f:
+            f.write(updated)
+        print("updated sitemap.xml lastmod →", today)
+
+
 def main():
     with open(TEMPLATE, encoding="utf-8") as f:
         template_html = f.read()
@@ -289,6 +319,8 @@ def main():
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(out_html)
         print("wrote", os.path.relpath(out_path, ROOT))
+
+    update_sitemap_lastmod()
 
 
 if __name__ == "__main__":
